@@ -1,0 +1,268 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Hind', sans-serif;
+            color: white;
+            background-color: #BEE9E8;
+        }
+        
+        #container {
+            margin-top: 100px;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 5em;
+        }
+        
+        #question {
+            height: 450px;
+            width: 650px;
+            margin: 0 auto;
+        }
+        
+        #answer {
+            margin-top: -420px;
+            color: #ED6A5A;
+            z-index: 2;
+        }
+        
+        #map {
+            width: 650px;
+            height: 450px;
+            z-index: -1;
+        }
+        
+        .accordion {
+            font-size: 16px;
+            font-family: "Hind", sans-serif;
+        }
+        
+        .accordion .card {
+            background: rgb(0, 0, 0, 0);
+            border-radius: 0;
+            border: none;
+            margin-bottom: 5px;
+            padding-bottom: 3px;
+        }
+        
+        .accordion .card-header {
+            background: rgb(0, 0, 0, 0);
+            padding: .4rem 1rem;
+            border-radius: 0;
+            margin-bottom: -2px;
+            font-family: "Hind", sans-serif;
+            font-size: 16px;
+            margin: 0 3px 3px 0;
+            border: none;
+        }
+        
+        .accordion .card-header:hover {
+            background: rgb(0, 0, 0, 0);
+        }
+        
+        .accordion .card-header .btn {
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+            text-align: left;
+            position: relative;
+            top: -2px;
+            font-weight: 700;
+        }
+        
+        .accordion .card-header i {
+            float: right;
+            font-size: 16px;
+            font-weight: bold;
+            position: relative;
+            top: 5px;
+        }
+        
+        .accordion .card-header button:hover {
+            color: #23384e;
+        }
+        
+        .accordion .card-header.highlight {
+            color: #fff;
+            background: rgb(0, 0, 0, 0);
+        }
+        
+        .accordion .card-body {
+            text-align: justify;
+            font-size: 16px;
+            font-family: "Hind", sans-serif;
+            font-weight: 400;
+        }
+        
+        .row {
+            width: 650px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <title>Safe Water</title>
+</head>
+
+
+<body>
+
+    <div id="container">
+
+        <h1>Is My Water Safe?</h1>
+
+        <!--Enter Zip Code Here-->
+        <div id="question">
+            <div id="map"></div>
+            <h1 id="answer">No!</h1>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 nopadding">
+                <div class="accordion mt-5 no padding" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Explore Why <i class="material-icons">add</i></a>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Vestibulum id metus ac nisl bibendum scelerisque non
+                                non purus. Suspendisse varius nibh non aliquet sagittis. In tincidunt orci sit amet elementum vestibulum.
+                                <div id="graph">
+                                    <iframe src="https://prattsavi.github.io/SafeWater/visuals/bar_graph.html" frameborder="0" width="750" height="500"></iframe>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Learn More About Contaminants <i class="material-icons">add</i></a>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+
+                                <div id="cont1">
+                                    <b>Arsenic:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+                                <br>
+                                <div id="cont1">
+                                    <b>Barium:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+                                <br>
+                                <div id="cont1">
+                                    <b>Arsenic:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+                                <br>
+                                <div id="cont1">
+                                    <b>Bromate:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+                                <br>
+                                <div id="cont1">
+                                    <b>Nitrate:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+                                <br>
+                                <div id="cont1">
+                                    <b>Chorium:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+                                <br>
+                                <div id="cont1">
+                                    <b>Floride:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+                                <br>
+                                <div id="cont1">
+                                    <b>Chlorine:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiY2Fua2FkaXIiLCJhIjoiY2pteXplNnEzMHF3YTNrcGx0dGd4MmJrdiJ9.zbhQ39YIdfZufTljuTSl1w';
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/cankadir/ckhv61nt802xu19mg6npsc0sr', // custom style url from https://studio.mapbox.com/
+            center: [-73.955870, 40.728471], // starting position
+            zoom: 13 // starting zoom
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Add minus icon for collapse element which is open by default
+            $(".collapse.show").each(function() {
+                $(this).siblings(".card-header").find(".btn i").html("remove");
+                $(this).prev(".card-header").addClass("highlight");
+            });
+
+            // Toggle plus minus icon on show hide of collapse element
+            $(".collapse").on('show.bs.collapse', function() {
+                $(this).parent().find(".card-header .btn i").html("remove");
+            }).on('hide.bs.collapse', function() {
+                $(this).parent().find(".card-header .btn i").html("add");
+            });
+
+            // Highlight open collapsed element 
+            $(".card-header .btn").click(function() {
+                $(".card-header").not($(this).parents()).removeClass("highlight");
+                $(this).parents(".card-header").toggleClass("highlight");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

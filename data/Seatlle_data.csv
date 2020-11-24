@@ -1,0 +1,11 @@
+contaminate,unit,mclg,mcl,Average,Range,Cause
+Turbidity (cloudiness),NTU,NA,TT,0.3,0.2 to 1.8,Soil runoff
+Arsenic,ppb,0,10,0.4,0.4 to 0.6,Erosion of natural deposits
+Barium,ppb,2000,2000,1.6,1.4 to 1.9,`
+Bromate,ppb,0,10,ND,ND,By-product of drinking water disinfection
+Nitrate,ppm,10,10,ND,One Sample,Erosion of natural deposits
+Chromium,ppb,100,100,0.27,0.25 to 0.33,Erosion of natural deposits
+Fluoride,ppm,4,4,0.7,0.6 to 0.8,Water additive that promotes strong teeth
+Total Trihalomethanes,ppb,NA,80,39,21 to 43,By-products of drinking water chlorination
+Haloacetic Acids(5),ppb,NA,60,36,16 to 41,
+Chlorine,ppm,MRDLG=4,MRDL=4,1,0 to 1.7,Water additive used to control microbes
