@@ -137,6 +137,12 @@ fig.update_layout(
     )
 )
 
-fig.show( config = dict(displayModeBar= False) )
-fig.write_html( r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\lolli_graph.html")
+#fig.show( config = dict(displayModeBar= False) )
+fig.write_html( 
+    r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\lolli_graph.html" ,
+    include_plotlyjs = 'cdn',
+    full_html = False
+    )
+#fig.write_image( r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\lolli_graph.pdf" )
+
 # %%
