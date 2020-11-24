@@ -105,7 +105,7 @@ fig.update_layout(
     plot_bgcolor=plot_blue,
     paper_bgcolor=plot_blue ,
     showlegend = False,
-    margin = dict(t=25,l=85,r=5,b=25)
+    margin = dict(t=0,l=0,r=0,b=0)
     )
 
 fig.update_xaxes(showgrid=True, gridwidth=0.05, gridcolor = '#e4f6f5' )
@@ -113,7 +113,7 @@ fig.update_yaxes(showgrid=True, gridwidth=0.05, gridcolor = '#e4f6f5' )
 
 fig.add_annotation(text="Level <b>Above</b><br>EPA Threshold",
                   xref="paper", yref="paper",
-                  x=-0.17, y=0.75, showarrow=False,align='right',
+                  x=0, y=0.75, showarrow=False,align='right',
                   font=dict(
                     size=12,
                     color="white"
@@ -122,7 +122,7 @@ fig.add_annotation(text="Level <b>Above</b><br>EPA Threshold",
 
 fig.add_annotation(text="Level <b>Below</b><br>EPA Threshold",
                   xref="paper", yref="paper",
-                  x=-0.17, y=0.25, showarrow=False, align='right',
+                  x=0, y=0.25, showarrow=False, align='right',
                   font=dict(
                     size=12,
                     color="white"
@@ -136,6 +136,7 @@ fig.update_layout(
         #bordercolor = 'white'
     )
 )
+fig.update_xaxes(range=[-4, len(df) ])
 
 #fig.show( config = dict(displayModeBar= False) )
 fig.write_html( 
@@ -144,5 +145,8 @@ fig.write_html(
     full_html = False
     )
 #fig.write_image( r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\lolli_graph.pdf" )
+fig.show()
+# %%
 
+fig.write_image( r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\chart.pdf")
 # %%
