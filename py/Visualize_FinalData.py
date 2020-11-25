@@ -320,7 +320,6 @@ fig.add_annotation(text="Violation",
 config={'modeBarButtonsToRemove': ['toggleSpikelines','hoverCompareCartesian','zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2'],'displayModeBar': False }
 fig.show( config = config )
 
-#%%
 fig.write_html( 
     r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph.html" ,
     include_plotlyjs = 'cdn',

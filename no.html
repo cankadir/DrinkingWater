@@ -49,17 +49,6 @@
             font-weight: 800;
         }
         
-        #question {
-            margin-top: -85px;
-            height: 415px;
-        }
-        
-        #answer {
-            margin-top: -370px;
-            color: #F47A4E;
-            z-index: 2;
-        }
-        
         .accordion .card {
             background: rgb(0, 0, 0, 0);
             border-radius: 0;
@@ -113,7 +102,6 @@
         }
         
         #map-image {
-            height: 412px;
             border-radius: 25px;
             border-color: white;
             border-width: 2px;
@@ -126,7 +114,7 @@
         
         #text-def {
             margin-top: 15px;
-            font-size: 14px;
+            font-size: 16px;
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
         }
@@ -153,26 +141,25 @@
         }
         
         #answer {
+            margin-top: -290px;
             font-family: 'Open Sans', sans-serif;
             text-align: center;
             color: #F47A4E;
             font-size: 5em;
             font-weight: 800;
-            z-index: 2;
+            z-index: 1;
         }
         
         #answer-bg {
             font-family: 'Open Sans', sans-serif;
             text-align: center;
-            color: #F47A4E;
+            color: white;
             font-size: 5em;
             font-weight: 800;
-            color: rgb(0, 0, 0, 0);
-            z-index: 1;
+            z-index: -1;
             position: relative;
-            right: -4px;
-            top: -132px;
-            -webkit-text-stroke: 1px #F47A4E;
+            right: -5px;
+            top: -148px;
         }
         
         #material-card {
@@ -210,57 +197,69 @@
         }
         
         hr {
-            border: 0.25px solid white;
+            border: none;
+            color: white;
+            background-color: white;
+            height: 2px;
+        }
+        
+        #title-bar {
+            height: 80px;
         }
     </style>
 
     <title>Drinking Water!</title>
 </head>
 
-
 <body>
-
     <div id="container">
-        <div class="row d-flex justify-content-center mt-5">
-            <div class="col-lg-12">
-
-                <div class="overlap-title">
-                    <p id="title">Is My Water Safe?</p>
-                    <p id="title-bg">Is My Water Safe?</p>
-                </div>
-
-                <!--Enter Zip Code Here-->
-                <div id="question">
-                    <div class="row d-flex justify-content-center" id="map-image">
-                        <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-01.svg" alt="zipcode map" width="750px" height="412px">
-                    </div>
-
-                    <p id="answer">No!</p>
-                    <p id="answer-bg">No!</p>
-
-                </div>
-            </div>
+        <div class="row d-flex justify-content-center mt-5 mb-3" id="title-bar">
+            <p id="title">Is My Water Safe?</p>
+            <p id="title-bg">Is My Water Safe?</p>
         </div>
 
-        <div class="row d-flex justify-content-center mt-1 mr-1 ml-1">
-            <p id='text-def'><b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill Mountains that are
-                as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton. </p>
-        </div>
-
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center mt-0">
             <div class="col-lg-12">
                 <div class="accordion mt-1 nopadding" id="accordionExample">
+
+                    <!--Learn -->
+                    <div class="card">
+                        <div class="card-header p-0 mt-1" id="headingZero">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">Information <i class="material-icons">add</i></a>
+                            </h2>
+                            <hr width="750px" size="5">
+                        </div>
+
+                        <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordionExample">
+                            <div class="card-body">
+
+
+                                <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-01.svg" alt="zipcode map" width="660px" height="400px">
+
+
+                                <p id="answer">No!</p>
+                                <p id="answer-bg">No!</p>
+
+                                <p id='text-def'><b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill
+                                    Mountains that are as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton. </p>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <!--General Info-->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingOne">
                             <h2 class="mb-0">
                                 <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Why? <i class="material-icons">add</i></a>
                             </h2>
+                            <hr width="750px" size="5">
                         </div>
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. Contaminants above EPA standarts are <span style="color:#F47A4E;"><b>highlighted in red</b></span>.
                                 <div class="row d-flex justify-content-center">
-                                    <iframe src="https://prattsavi.github.io/DrinkingWater/visuals/lolli_graph.html" frameborder="0" width="600" height="400"></iframe>
+                                    <iframe src="https://prattsavi.github.io/DrinkingWater/visuals/vBar_graph.html" frameborder="0" width="680" height="430"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -272,6 +271,7 @@
                             <h2 class="mb-0">
                                 <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Learn More<i class="material-icons">add</i></a>
                             </h2>
+                            <hr width="750px" size="5">
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div class="card-body">
@@ -871,45 +871,41 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            // Add minus icon for collapse element which is open by default
+            $(".collapse.show").each(function() {
+                $(this).siblings(".card-header").find(".btn i").html("remove");
+                $(this).prev(".card-header").addClass("highlight");
+            });
 
-                <script>
-                    $(document).ready(function() {
-                        // Add minus icon for collapse element which is open by default
-                        $(".collapse.show").each(function() {
-                            $(this).siblings(".card-header").find(".btn i").html("remove");
-                            $(this).prev(".card-header").addClass("highlight");
-                        });
+            // Toggle plus minus icon on show hide of collapse element
+            $(".collapse").on('show.bs.collapse', function() {
+                $(this).parent().find(".card-header .btn i").html("remove");
+            }).on('hide.bs.collapse', function() {
+                $(this).parent().find(".card-header .btn i").html("add");
+            });
 
-                        // Toggle plus minus icon on show hide of collapse element
-                        $(".collapse").on('show.bs.collapse', function() {
-                            $(this).parent().find(".card-header .btn i").html("remove");
-                        }).on('hide.bs.collapse', function() {
-                            $(this).parent().find(".card-header .btn i").html("add");
-                        });
+            // Highlight open collapsed element 
+            $(".card-header .btn").click(function() {
+                $(".card-header").not($(this).parents()).removeClass("highlight");
+                $(this).parents(".card-header").toggleClass("highlight");
+            });
+        });
+    </script>
 
-                        // Highlight open collapsed element 
-                        $(".card-header .btn").click(function() {
-                            $(".card-header").not($(this).parents()).removeClass("highlight");
-                            $(this).parents(".card-header").toggleClass("highlight");
-                        });
-                    });
-                </script>
-
-
-                <!-- Footer -->
-                <footer class="page-footer font-small mt-5">
-                    <hr width="100%" size="10">
-                    <!-- Copyright -->
-                    <div class="footer-copyright text-center py-1">Designed By:
-                        <a href="https://commons.pratt.edu/savi/" style="color: white"> SAVI</a> & <a href="https://www.saraeichnergis.com/">Sara Eichner</a>
-                    </div>
-                    <!-- Copyright -->
-
-                </footer>
-                <!-- Footer -->
+    <!-- Footer -->
+    <footer class="page-footer mt-5">
+        <hr width="650px" size="2">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-1">
+            Designed By:<a href="https://commons.pratt.edu/savi/" style="color: white"> SAVI</a> & <a href="https://www.saraeichnergis.com/" style="color: white">Sara Eichner</a>
+        </div>
+    </footer>
 
 </body>
 
