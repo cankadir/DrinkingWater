@@ -299,7 +299,7 @@ fig.add_annotation(text="Safe",
 
 fig.add_annotation(text="EPA Threshold",
                   xref="paper", yref="paper",
-                  x=0.42, y=ay, showarrow=False,align='right',
+                  x=0.79, y=ay, showarrow=False,align='right',
                   font=dict(
                     family= "Open Sans, sans-serif",
                     size=12,
@@ -320,6 +320,7 @@ fig.add_annotation(text="Violation",
 config={'modeBarButtonsToRemove': ['toggleSpikelines','hoverCompareCartesian','zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2'],'displayModeBar': False }
 fig.show( config = config )
 
+#%%
 fig.write_html( 
     r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph.html" ,
     include_plotlyjs = 'cdn',
