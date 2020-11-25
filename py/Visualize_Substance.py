@@ -108,9 +108,11 @@ for i,r in df.iterrows():
     fig.update_xaxes(showgrid=False)
 
     folder = 'C:/Users/csucuogl/Documents/GitHub/DrinkingWater/visuals/materials/'
-    fig.write_html( os.path.join(folder , cont+'.html') )
+    fig.write_html( os.path.join(folder , cont.strip()+'.html') ,
+    include_plotlyjs = 'cdn',
+    full_html = False)
 
     fig.show()
-
+    break
 
 # %%

@@ -29,10 +29,10 @@ df.head(5)
 
 # %%
 
-plot_blue = '#BEE9E8'
-plot_red = '#ED6A5A'
+plot_blue = '#5DA7FF'
+plot_red = '#F47A4E'
 
-#%% Simple Bar Chart
+#%% Simple Bar Chart - VERTICAL
 
 fig = go.Figure()
 
@@ -146,7 +146,186 @@ fig.write_html(
     )
 #fig.write_image( r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\lolli_graph.pdf" )
 fig.show()
-# %%
 
-fig.write_image( r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\chart.pdf")
+
+# %% BAR CHART - VERTICAL
+# Errorb are separate bar charts in traces
+
+
+fig = go.Figure()
+
+df_below = df[ df['n_average']<=0 ]
+df_above = df[ df['n_average']>0 ]
+
+fig.add_trace( #Below Threshold - POINT
+    go.Scatter(
+        y=df_below['SUBSTANCE '],
+        x=df_below['n_average'],
+        mode = 'markers',
+        text = df_below['source'].replace(' <br> ' , "<br>" , regex = True),
+        hovertemplate = '<b>%{y}</b><br>%{text}<extra></extra>',
+            marker = dict(
+                color='white',
+                size = 10,
+                line_width=0
+                )
+        )
+    )
+
+fig.add_trace( #Below Threshold - BAR
+    go.Bar(
+        y=df_below['SUBSTANCE '],
+        x=df_below['n_range_high'] - df_below['n_range_low'],
+        base = df_below['n_range_low'],
+        orientation = 'h',
+        width = 0.75,
+        marker_color = 'white',
+        opacity= 0.2
+
+        )
+    )
+
+fig.add_trace( #Above Threshold - POINT
+    go.Scatter(
+        y=df_above['SUBSTANCE '],
+        x=df_above['n_average'],
+        mode = 'markers',
+        marker_symbol = 4,
+        text = df_above['source'].replace(' <br> ' , "<br>" , regex = True),
+        hovertemplate = '<b>%{y}</b><br>%{text}<extra></extra>',
+        marker = dict(
+            color= plot_red,
+            size = 14,
+            line_width=1,
+            line_color='white'
+
+            )
+        )
+    )
+
+fig.add_trace( #Above Threshold - BAR
+    go.Bar(
+        y=df_above['SUBSTANCE '],
+        x=df_above['n_range_high'] - df_above['n_range_low'],
+        base = df_above['n_range_low'],
+        orientation = 'h',
+        width = 0.75,
+        marker_color = plot_red,
+        opacity= 0.3
+
+        )
+    )
+
+fig.add_shape(type="line", #GRID LINES - ZERO LINE
+    x0=0, y0=0, x1=0, y1=len(df)+1,
+    opacity = 0.75,
+    line=dict(
+        color= plot_red,
+        width=1.5,
+        dash="dash",
+        )
+    )
+
+for i in range( len(df)): #GRID LINES - GRIDLINE
+    fig.add_shape(type="line",
+        x0=-1.05, 
+        y0=i, 
+        x1=1.05,
+        y1=i,
+        opacity = 0.75,
+        line=dict(
+            color= 'white',
+            width=0.6,
+            dash="dot",
+        )
+    )
+
+fig.add_shape(type="rect", #Violation BG
+    x0=1.05, y0=len(df), 
+    x1=0, y1=len(df)+1,
+    fillcolor=plot_red,
+    opacity = 0.5,
+    line=dict(width=0),
+    )
+
+fig.add_trace( #EPA Goals
+    go.Scatter(
+        y=df['SUBSTANCE '],
+        x=df['n_goal'],
+        mode = 'markers',
+        marker_symbol = 142,
+        text = df['PHG [MCLG] Goal'],
+        hovertemplate = "EPA's future goal for<br><b>%{y}</b> is %{text}<extra></extra>",
+        marker = dict(
+            color= '#F9D812',
+            size = 10,
+            line = dict(
+                width = 3
+                )
+
+            )
+        )
+    )
+
+fig.update_layout( #All Layout
+    width=650,
+    height=400,
+    xaxis = dict(zeroline=False,nticks=1,showgrid=False,showticklabels=False,range=[-1.05,1.05]),
+    xaxis_tickformat = '%',
+    yaxis = dict(
+        showticklabels=False,zeroline=False,showgrid=False,
+        range=[-1,len(df)+1]
+        ),
+    plot_bgcolor=plot_blue,
+    paper_bgcolor=plot_blue ,
+    showlegend = False,
+    margin = dict(t=5,l=5,r=5,b=5),
+    hoverlabel=dict(
+        bgcolor="white",
+        font_size=11,
+        )
+    )
+
+ay = 0.99
+
+fig.add_annotation(text="Safe",
+                  xref="paper", yref="paper",
+                  x=0.025, y=ay, showarrow=False,align='right',
+                  font=dict(
+                    family= "Open Sans, sans-serif",
+                    size=12,
+                    color="white"
+                    ),
+                  )
+
+fig.add_annotation(text="EPA Threshold",
+                  xref="paper", yref="paper",
+                  x=0.42, y=ay, showarrow=False,align='right',
+                  font=dict(
+                    family= "Open Sans, sans-serif",
+                    size=12,
+                    color="white"
+                    ),
+                  )
+
+fig.add_annotation(text="Violation",
+                  xref="paper", yref="paper",
+                  x=0.99, y=ay, showarrow=False,align='right',
+                  font=dict(
+                    family= "Open Sans, sans-serif",
+                    size=12,
+                    color="white"
+                    ),
+                  )
+
+config={'modeBarButtonsToRemove': ['toggleSpikelines','hoverCompareCartesian','zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2'],'displayModeBar': False }
+fig.show( config = config )
+
+fig.write_html( 
+    r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph.html" ,
+    include_plotlyjs = 'cdn',
+    full_html = False
+    )
+
+
 # %%
