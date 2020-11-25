@@ -34,6 +34,7 @@
         #container {
             width: 750px;
             margin: 0 auto;
+            margin-bottom: 20px;
         }
         
         h1 {
@@ -145,6 +146,29 @@
             z-index: -1;
             -webkit-text-stroke: 1px white;
         }
+        
+        #answer {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            color: #F47A4E;
+            font-size: 5em;
+            font-weight: 800;
+            z-index: 2;
+        }
+        
+        #answer-bg {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            color: #F47A4E;
+            font-size: 5em;
+            font-weight: 800;
+            color: rgb(0, 0, 0, 0);
+            z-index: 1;
+            position: relative;
+            right: -4px;
+            top: -132px;
+            -webkit-text-stroke: 1px #F47A4E;
+        }
     </style>
 
     <title>Drinking Water!</title>
@@ -168,7 +192,8 @@
                         <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-01.svg" alt="zipcode map" width="750px" height="412px">
                     </div>
 
-                    <h1 id="answer">No!</h1>
+                    <p id="answer">No!</p>
+                    <p id="answer-bg">No!</p>
 
                 </div>
             </div>
