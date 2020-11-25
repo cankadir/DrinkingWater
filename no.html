@@ -169,6 +169,40 @@
             top: -132px;
             -webkit-text-stroke: 1px #F47A4E;
         }
+        
+        #material-card {
+            background-color: white;
+            border-radius: 20px;
+        }
+        
+        .material {
+            font-family: 'Open Sans', sans-serif;
+            color: black
+        }
+        
+        p.material {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        p.material-title {
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        h2.material-main {
+            font-size: 36px;
+            font-weight: 700;
+            color: #5DA7FF;
+        }
+        
+        #mat-container {
+            padding-top: 20px;
+            padding-left: 30px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
     </style>
 
     <title>Drinking Water!</title>
@@ -207,6 +241,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-12">
                 <div class="accordion mt-1 nopadding" id="accordionExample">
+                    <!--General Info-->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingOne">
                             <h2 class="mb-0">
@@ -215,17 +250,14 @@
                         </div>
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. Contaminants above EPA standarts are <span style="color:#F47A4E;"><b>highlighted in red</b></span>.
-
-                                <div class="row d-flex justify-content-center" id="main-graph">
+                                <div class="row d-flex justify-content-center">
                                     <iframe src="https://prattsavi.github.io/DrinkingWater/visuals/lolli_graph.html" frameborder="0" width="600" height="400"></iframe>
-
                                 </div>
-
-
                             </div>
-
                         </div>
                     </div>
+
+                    <!--Materials-->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingTwo">
                             <h2 class="mb-0">
@@ -235,45 +267,56 @@
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div class="card-body">
 
-                                <div id="cont1">
-                                    <b>Arsenic:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                <!--First Material Start Here-->
+                                <div id="material-card">
+                                    <div id="mat-container">
+                                        <h2 class="material-main">Arsenic</h2>
+
+                                        <p class="material-title">SOURCE</p>
+                                        <p class="material">Arsenic enters the water system through erosion of natural deposits; runoff from orchards; glass and electronics production wastes.</p>
+
+                                        <p class="material-title">DESCRIPTION</p>
+                                        <p class="material">An inorganic contaminant regulated under the Phase II/V Rules. Arsenic is a semi-metal element in the periodic table. It is odorless and tasteless. It can enter drinking water supplies from natural deposits in the
+                                            earth or from agricultural and industrial practices.<br>Some people who drink water containing arsenic in excess of the MCL over many years could experience skin damage or problems with their circulatory system,
+                                            and may have an increased risk of getting cancer. Arsenic has been linked to a number of cancers. These include cancer of the bladder, lungs, skin, kidney, nasal passages, liver, and prostate.</p>
+
+                                        <p class="material-title">WHAT ARE WE DOING ABOUT IT?</p>
+                                        <p class="material">The water utility addressed the arsenic non compliance by doing this and that. Levels have continued to go down in response and there is no risk to residents in 2020. </p>
+
+                                        <p class="material-title">HOW DO WE TREAT WATER WITH THIS CONTAMINANT?</p>
+                                        <p class="material">Dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer
+                                            adipiscing elit, sed diam</p>
+
+                                        <p class="material-title">WHAT CAN YOU DO?</p>
+                                        <p class="material">Dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer
+                                            adipiscing elit, sed diam</p>
+
+                                        <div class="mat-graph">
+                                            <p class="material-title" style="color:#5DA7FF;">HISTORY OF ARSENIC LEVELS IN NYC WATERSHED</p>
+                                            <iframe src="https://prattsavi.github.io/DrinkingWater/visuals/materials/Arsenic%20.html" frameborder="0" width="600" height="400" scrolling="no"></iframe>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
                                 </div>
-                                <br>
-                                <div id="cont1">
-                                    <b>Barium:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </div>
-                                <br>
-                                <div id="cont1">
-                                    <b>Arsenic:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </div>
-                                <br>
-                                <div id="cont1">
-                                    <b>Bromate:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </div>
-                                <br>
-                                <div id="cont1">
-                                    <b>Nitrate:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </div>
-                                <br>
-                                <div id="cont1">
-                                    <b>Chorium:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </div>
-                                <br>
-                                <div id="cont1">
-                                    <b>Floride:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </div>
-                                <br>
-                                <div id="cont1">
-                                    <b>Chlorine:</b> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -282,35 +325,32 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
-            </div>
-        </div>
 
+                <script>
+                    $(document).ready(function() {
+                        // Add minus icon for collapse element which is open by default
+                        $(".collapse.show").each(function() {
+                            $(this).siblings(".card-header").find(".btn i").html("remove");
+                            $(this).prev(".card-header").addClass("highlight");
+                        });
 
-    </div>
+                        // Toggle plus minus icon on show hide of collapse element
+                        $(".collapse").on('show.bs.collapse', function() {
+                            $(this).parent().find(".card-header .btn i").html("remove");
+                        }).on('hide.bs.collapse', function() {
+                            $(this).parent().find(".card-header .btn i").html("add");
+                        });
 
-    <script>
-        $(document).ready(function() {
-            // Add minus icon for collapse element which is open by default
-            $(".collapse.show").each(function() {
-                $(this).siblings(".card-header").find(".btn i").html("remove");
-                $(this).prev(".card-header").addClass("highlight");
-            });
-
-            // Toggle plus minus icon on show hide of collapse element
-            $(".collapse").on('show.bs.collapse', function() {
-                $(this).parent().find(".card-header .btn i").html("remove");
-            }).on('hide.bs.collapse', function() {
-                $(this).parent().find(".card-header .btn i").html("add");
-            });
-
-            // Highlight open collapsed element 
-            $(".card-header .btn").click(function() {
-                $(".card-header").not($(this).parents()).removeClass("highlight");
-                $(this).parents(".card-header").toggleClass("highlight");
-            });
-        });
-    </script>
+                        // Highlight open collapsed element 
+                        $(".card-header .btn").click(function() {
+                            $(".card-header").not($(this).parents()).removeClass("highlight");
+                            $(this).parents(".card-header").toggleClass("highlight");
+                        });
+                    });
+                </script>
 
 </body>
 
