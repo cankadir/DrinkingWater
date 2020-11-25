@@ -149,8 +149,6 @@ fig.show()
 
 
 # %% BAR CHART - VERTICAL
-# Errorb are separate bar charts in traces
-
 
 fig = go.Figure()
 
@@ -250,8 +248,8 @@ fig.add_shape(type="rect", #Violation BG
 
 fig.add_trace( #EPA Goals
     go.Scatter(
-        y=df['SUBSTANCE '],
-        x=df['n_goal'],
+        y=df[~pd.isna(df['PHG [MCLG] Goal'])]['SUBSTANCE '],
+        x=df[~pd.isna(df['PHG [MCLG] Goal'])]['n_goal'],
         mode = 'markers',
         marker_symbol = 142,
         text = df['PHG [MCLG] Goal'],
@@ -262,7 +260,6 @@ fig.add_trace( #EPA Goals
             line = dict(
                 width = 3
                 )
-
             )
         )
     )
@@ -270,7 +267,9 @@ fig.add_trace( #EPA Goals
 fig.update_layout( #All Layout
     width=650,
     height=400,
-    xaxis = dict(zeroline=False,nticks=1,showgrid=False,showticklabels=False,range=[-1.05,1.05]),
+    xaxis = dict(zeroline=False,nticks=1,showgrid=False,showticklabels=False,
+        range = [df['n_average'].min() - 0.05 , df['n_average'].max() + 0.05 ]
+        ),
     xaxis_tickformat = '%',
     yaxis = dict(
         showticklabels=False,zeroline=False,showgrid=False,
@@ -326,6 +325,9 @@ fig.write_html(
     include_plotlyjs = 'cdn',
     full_html = False
     )
+
+
+# %%
 
 
 # %%
