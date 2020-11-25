@@ -32,7 +32,8 @@
         }
         
         #container {
-            margin-top: 100px;
+            width: 750px;
+            margin: 0 auto;
         }
         
         h1 {
@@ -43,8 +44,8 @@
         }
         
         #question {
-            height: 350px;
             margin-top: 25px;
+            height: 415px;
         }
         
         #answer {
@@ -106,11 +107,29 @@
         }
         
         #map-image {
-            height: 350px;
+            height: 412px;
             border-radius: 25px;
             border-color: white;
             border-width: 2px;
             text-align: center;
+        }
+        
+        #main-graph {
+            margin-top: 10px;
+        }
+        
+        #text-def {
+            margin-top: 15px;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+        
+        #title {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-size: 3em;
+            font-weight: 800;
         }
     </style>
 
@@ -121,15 +140,15 @@
 <body>
 
     <div id="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-9">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-lg-12">
 
-                <h1>Is My Water Safe?</h1>
+                <p id="title">Is My Water Safe?</p>
 
                 <!--Enter Zip Code Here-->
                 <div id="question">
-                    <div id="map-image">
-                        <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/zip_map.png" alt="zipcode map" width="750px" height="100%">
+                    <div class="row d-flex justify-content-center" id="map-image">
+                        <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-01.svg" alt="zipcode map" width="750px" height="412px">
                     </div>
 
                     <h1 id="answer">No!</h1>
@@ -138,20 +157,25 @@
             </div>
         </div>
 
+        <div class="row d-flex justify-content-center mt-1 mr-1 ml-1">
+            <p id='text-def'><b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill Mountains that are
+                as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton. </p>
+        </div>
+
         <div class="row d-flex justify-content-center">
-            <div class="col-lg-9">
-                <div class="accordion mt-2 no padding" id="accordionExample">
+            <div class="col-lg-12">
+                <div class="accordion mt-1 nopadding" id="accordionExample">
                     <div class="card">
-                        <div class="card-header" id="headingOne">
+                        <div class="card-header p-0 mt-1" id="headingOne">
                             <h2 class="mb-0">
                                 <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Explore Why <i class="material-icons">add</i></a>
                             </h2>
                         </div>
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Vestibulum id metus ac nisl bibendum scelerisque non
-                                non purus. Suspendisse varius nibh non aliquet sagittis. In tincidunt orci sit amet elementum vestibulum.
-                                <div id="graph">
-                                    <iframe src="https://prattsavi.github.io/DrinkingWater/visuals/lolli_graph.html" frameborder="0" width="750" height="500"></iframe>
+                            <div class="card-body">Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. Contaminants above EPA standarts are <span style="color:#F47A4E;">highlighted in red</span>.
+
+                                <div class="row d-flex justify-content-center" id="main-graph">
+                                    <iframe src="https://prattsavi.github.io/DrinkingWater/visuals/lolli_graph.html" frameborder="0" width="600" height="400"></iframe>
 
                                 </div>
 
@@ -161,9 +185,9 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingTwo">
+                        <div class="card-header p-0 mt-1" id="headingTwo">
                             <h2 class="mb-0">
-                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Learn More About Contaminants <i class="material-icons">add</i></a>
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Learn More<i class="material-icons">add</i></a>
                             </h2>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
