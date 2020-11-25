@@ -17,8 +17,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
@@ -26,60 +26,45 @@
 
     <style>
         body {
-            font-family: 'Hind', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             color: white;
-            background-color: #BEE9E8;
+            background-color: #5DA7FF;
         }
         
         #container {
             margin-top: 100px;
-            margin-left: 10%;
-            margin-right: 10%;
         }
         
         h1 {
+            font-family: 'Open Sans', sans-serif;
             text-align: center;
             font-size: 5em;
+            font-weight: 800;
         }
         
         #question {
-            height: 450px;
-            width: 650px;
-            margin: 0 auto;
+            height: 350px;
+            margin-top: 25px;
         }
         
         #answer {
-            margin-top: -420px;
-            color: #ED6A5A;
+            margin-top: -330px;
+            color: #F47A4E;
             z-index: 2;
-        }
-        
-        #map {
-            width: 650px;
-            height: 450px;
-            z-index: -1;
-        }
-        
-        .accordion {
-            font-size: 16px;
-            font-family: "Hind", sans-serif;
         }
         
         .accordion .card {
             background: rgb(0, 0, 0, 0);
             border-radius: 0;
             border: none;
-            margin-bottom: 5px;
-            padding-bottom: 3px;
         }
         
         .accordion .card-header {
             background: rgb(0, 0, 0, 0);
-            padding: .4rem 1rem;
             border-radius: 0;
-            margin-bottom: -2px;
-            font-family: "Hind", sans-serif;
-            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
             margin: 0 3px 3px 0;
             border: none;
         }
@@ -89,19 +74,16 @@
         }
         
         .accordion .card-header .btn {
-            font-size: 16px;
-            font-weight: 500;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
             width: 100%;
             text-align: left;
             position: relative;
-            top: -2px;
-            font-weight: 700;
         }
         
         .accordion .card-header i {
             float: right;
-            font-size: 16px;
-            font-weight: bold;
             position: relative;
             top: 5px;
         }
@@ -116,15 +98,19 @@
         }
         
         .accordion .card-body {
+            margin-left: 50px;
             text-align: justify;
-            font-size: 16px;
-            font-family: "Hind", sans-serif;
+            font-size: 18px;
+            font-family: 'Open Sans', sans-serif;
             font-weight: 400;
         }
         
-        .row {
-            width: 650px;
-            margin: 0 auto;
+        #map-image {
+            height: 350px;
+            border-radius: 25px;
+            border-color: white;
+            border-width: 2px;
+            text-align: center;
         }
     </style>
 
@@ -135,19 +121,26 @@
 <body>
 
     <div id="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-9">
 
-        <h1>Is My Water Safe?</h1>
+                <h1>Is My Water Safe?</h1>
 
-        <!--Enter Zip Code Here-->
-        <div id="question">
-            <div id="map"></div>
-            <h1 id="answer">No!</h1>
+                <!--Enter Zip Code Here-->
+                <div id="question">
+                    <div id="map-image">
+                        <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/zip_map.png" alt="zipcode map" width="750px" height="100%">
+                    </div>
 
+                    <h1 id="answer">No!</h1>
+
+                </div>
+            </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12 nopadding">
-                <div class="accordion mt-5 no padding" id="accordionExample">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-9">
+                <div class="accordion mt-2 no padding" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
@@ -158,7 +151,7 @@
                             <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Vestibulum id metus ac nisl bibendum scelerisque non
                                 non purus. Suspendisse varius nibh non aliquet sagittis. In tincidunt orci sit amet elementum vestibulum.
                                 <div id="graph">
-                                    <iframe src="https://prattsavi.github.io/SafeWater/visuals/bar_graph.html" frameborder="0" width="750" height="500"></iframe>
+                                    <iframe src="https://prattsavi.github.io/DrinkingWater/visuals/lolli_graph.html" frameborder="0" width="750" height="500"></iframe>
 
                                 </div>
 
@@ -229,16 +222,6 @@
 
 
     </div>
-
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiY2Fua2FkaXIiLCJhIjoiY2pteXplNnEzMHF3YTNrcGx0dGd4MmJrdiJ9.zbhQ39YIdfZufTljuTSl1w';
-        var map = new mapboxgl.Map({
-            container: 'map', // container id
-            style: 'mapbox://styles/cankadir/ckhv61nt802xu19mg6npsc0sr', // custom style url from https://studio.mapbox.com/
-            center: [-73.955870, 40.728471], // starting position
-            zoom: 13 // starting zoom
-        });
-    </script>
 
     <script>
         $(document).ready(function() {
