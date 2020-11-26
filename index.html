@@ -21,13 +21,16 @@
         body {
             font-family: 'Hind', sans-serif;
             color: white;
-            background-color: #BEE9E8;
+            background-color: #5DA7FF;
         }
         
         #container {
             margin-top: 100px;
             margin-left: 10%;
             margin-right: 10%;
+            width: 750px;
+            margin: 0 auto;
+            margin-bottom: 40px;
         }
         
         h1 {
@@ -46,9 +49,9 @@
             float: right;
             width: 9%;
             height: 60px;
-            background-color: #92b1b0;
+            background-color: white;
             border: none;
-            color: white;
+            color: #5DA7FF;
             text-align: center;
             text-decoration: none;
             font-size: 16px;
@@ -61,7 +64,7 @@
         
         .form-control::placeholder {
             /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: #BEE9E8;
+            color: #5DA7FF;
             opacity: 1;
             font-size: 20px!important;
             /* Firefox */
@@ -69,14 +72,39 @@
         
         .form-control:-ms-input-placeholder {
             /* Internet Explorer 10-11 */
-            color: #BEE9E8;
+            color: #5DA7FF;
             font-size: 20px!important;
         }
         
         .form-control::-ms-input-placeholder {
             /* Microsoft Edge */
-            color: #BEE9E8;
+            color: #5DA7FF;
             font-size: 20px!important;
+        }
+        
+        #title {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-size: 3.2em;
+            font-weight: 800;
+            z-index: 2;
+        }
+        
+        #title-bg {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-size: 3.2em;
+            font-weight: 800;
+            color: rgb(0, 0, 0, 0);
+            position: relative;
+            right: -4px;
+            top: -88px;
+            z-index: -1;
+            -webkit-text-stroke: 1px white;
+        }
+        
+        #title-bar {
+            height: 80px;
         }
     </style>
 
@@ -87,20 +115,28 @@
 <body>
 
     <div id="container">
+        <div class="row d-flex justify-content-center mt-5 mb-3" id="title-bar">
+            <p id="title">Is My Water Safe?</p>
+            <p id="title-bg">Is My Water Safe?</p>
+        </div>
 
-        <h1>Is My Water Safe?</h1>
-
-        <!--Enter Zip Code Here-->
-        <div id="question">
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="input-zip" aria-describedby="zipHelp" placeholder="Enter Your Zipcode">
-                </div>
-                <button type="submit" class="btn btn-primary">Enter</button>
-            </form>
+        <div class="row d-flex justify-content-center mt-0">
+            <div class="col-lg-12">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="input-zip" aria-describedby="zipHelp" placeholder="Enter Your Zipcode">
+                    </div>
+                    <button id="button1" type="submit" class="btn btn-primary">Enter</button>
+                </form>
+            </div>
         </div>
     </div>
 
+    <script type="text/javascript">
+        $('button1').on('click', function() {
+            console.log('kfkejb');
+        })
+    </script>
 
 
 
