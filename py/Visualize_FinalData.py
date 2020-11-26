@@ -10,6 +10,9 @@ df.head(5)
 
 #%%
 
+plot_blue = '#5DA7FF'
+plot_red = '#F47A4E'
+
 new_text = []
 for i,r in df['TYPICAL SOURCE'].iteritems():
 
@@ -27,10 +30,6 @@ df['source'] = new_text
 
 df.head(5)
 
-# %%
-
-plot_blue = '#5DA7FF'
-plot_red = '#F47A4E'
 
 #%% Simple Bar Chart - VERTICAL
 
