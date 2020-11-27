@@ -44,7 +44,8 @@ fig.add_trace( #Below Threshold - POINT
         x=df_below['n_average'],
         mode = 'markers',
         text = df_below['source'].replace(' <br> ' , "<br>" , regex = True),
-        hovertemplate = '<b>%{y}</b><br>%{text}<extra></extra>',
+        customdata = df_below['Average Level'], 
+        hovertemplate = '<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>',
             marker = dict(
                 color='white',
                 size = 10,
@@ -73,7 +74,8 @@ fig.add_trace( #Above Threshold - POINT
         mode = 'markers',
         marker_symbol = 4,
         text = df_above['source'].replace(' <br> ' , "<br>" , regex = True),
-        hovertemplate = '<b>%{y}</b><br>%{text}<extra></extra>',
+        customdata = df_above['Average Level'], 
+        hovertemplate = '<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>',
         marker = dict(
             color= plot_red,
             size = 14,
@@ -135,8 +137,9 @@ fig.add_trace( #Goals
         x=df[~pd.isna(df['PHG [MCLG] Goal'])]['n_goal'],
         mode = 'markers',
         marker_symbol = 142,
-        text = df['PHG [MCLG] Goal'],
-        hovertemplate = "Goal for<br><b>%{y}</b> is %{text}<extra></extra>",
+        text = df[~pd.isna(df['PHG [MCLG] Goal'])]['PHG [MCLG] Goal'],
+        customdata = df[~pd.isna(df['PHG [MCLG] Goal'])]['Units'],
+        hovertemplate = "Goal for<b>%{y}</b>:<br> %{text} %{customdata}<extra></extra>",
         marker = dict(
             color= '#F9D812',
             size = 10,
@@ -208,9 +211,6 @@ fig.write_html(
     include_plotlyjs = 'cdn',
     full_html = False
     )
-
-
-# %%
 
 
 # %%

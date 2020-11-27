@@ -167,12 +167,14 @@
         
         #material-card {
             background-color: white;
+            height: 303px;
             width: 220px;
             margin-left: 3px;
         }
         
         #material-card-bad {
             background-color: #F47A4E;
+            height: 303px;
             width: 220px;
             margin-left: 3px;
             color: white;
@@ -194,17 +196,15 @@
         p.material-bad {
             font-size: 13px;
             font-weight: 600;
-            text-align: justify;
             text-justify: none;
-            margin-bottom: 0px;
+            margin-bottom: 5px;
         }
         
         p.material {
             font-size: 13px;
             font-weight: 600;
-            text-align: justify;
             text-justify: none;
-            margin-bottom: 0px;
+            margin-bottom: 5px;
         }
         
         p.material-title {
@@ -214,12 +214,14 @@
         }
         
         h5.material {
+            margin-bottom: 5px;
             font-size: 18px;
             font-weight: 800;
             color: #5DA7FF;
         }
         
         h5.material-bad {
+            margin-bottom: 5px;
             font-size: 18px;
             font-weight: 800;
             color: white;
@@ -242,6 +244,8 @@
 
 <body>
     <div id="container">
+
+        <!--Title -->
         <div class="row d-flex justify-content-center mt-5 mb-3" id="title-bar">
             <p id="title">Is My Water Safe?</p>
             <p id="title-bg">Is My Water Safe?</p>
@@ -290,7 +294,7 @@
                                 <div class="row d-flex justify-content-center">
 
                                     <!--PLotly Chart-->
-                                    <div id="779b9099-165f-4d8d-b7bb-f2208e1a2237" class="plotly-graph-div" style="height:400px; width:650px;"></div>
+                                    <div id="2f021ddb-ccd3-4a37-ab8c-799aa1766dd7" class="plotly-graph-div" style="height:400px; width:650px;"></div>
 
                                 </div>
                             </div>
@@ -313,7 +317,7 @@
                                         <div class="card">
                                             <div class="card-body" id="material-card-bad">
                                                 <h5 class="card-title material-bad">Lead</h5>
-                                                <p class="card-text material-bad"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material-bad"><b>Source:</b> The most common sources of lead in drinking water are lead pipes, faucets, and plumbing fixtures.</p>
                                                 <p class="card-text material-bad"><b>Violation:</b><br> Average Level: 17ppb<br> Action Level: 15 ppb<br> Goal: 0.2ppb</p>
                                                 <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                             </div>
@@ -324,7 +328,7 @@
                                         <div class="card">
                                             <div class="card-body" id="material-card-bad">
                                                 <h5 class="card-title material-bad">pH</h5>
-                                                <p class="card-text material-bad"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material-bad"><b>Source:</b> Water pipes and water-using appliances become encrusted with deposits, and it depresses the effectiveness of the disinfection of chlorine.</p>
                                                 <p class="card-text material-bad"><b>Violation:</b><br> Average Level: 7.9ppb<br> Action Level: 6.5 ppb<br> Goal: NA</p>
                                                 <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                             </div>
@@ -481,6 +485,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!--Bootstrap Code-->
                     <script>
                         $(document).ready(function() {
                             // Add minus icon for collapse element which is open by default
@@ -504,13 +510,15 @@
                         });
                     </script>
 
+                    <!--PLotly Graph JS-->
                     <script>
                         window.PLOTLYENV = window.PLOTLYENV || {};
 
-                        if (document.getElementById("779b9099-165f-4d8d-b7bb-f2208e1a2237")) {
+                        if (document.getElementById("2f021ddb-ccd3-4a37-ab8c-799aa1766dd7")) {
                             Plotly.newPlot(
-                                '779b9099-165f-4d8d-b7bb-f2208e1a2237', [{
-                                    "hovertemplate": "<b>%{y}</b><br>%{text}<extra></extra>",
+                                '2f021ddb-ccd3-4a37-ab8c-799aa1766dd7', [{
+                                    "customdata": [2.2, 2.1, 1.65, 0.7, 1.1, 1.5, 10.5, 2.5, 0.9, 29.0, 1.0, 310.0, 24.0, 186.0, 0.1],
+                                    "hovertemplate": "<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>",
                                     "marker": {
                                         "color": "white",
                                         "line": {
@@ -535,7 +543,8 @@
                                     "x": [0.25, 0.24, 0.10999999999999999, 0.20000000000000007, 0.07000000000000006, 0.3999999999999999, 0.09999999999999998, 0.17999999999999994, 0.0, 0.09999999999999998, 0.67, 0.45000000000000007, 0.07999999999999996, 0.20999999999999996, 0.06000000000000005],
                                     "y": ["Arsenic ", "Bromate ", "Chlorine", "Fluoride ", "Haloacetic Acids ", "Total Organic Carbon  [TOC]", "Total Trihalomethanes", "Uranium ", "Copper", "Chloride ", "Odor Threshold ", "Specific Conductance ", "Sulfate", "Total Dissolved Solids ", "Turbidity"]
                                 }, {
-                                    "hovertemplate": "<b>%{y}</b><br>%{text}<extra></extra>",
+                                    "customdata": [17.0, 7.9],
+                                    "hovertemplate": "<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>",
                                     "marker": {
                                         "color": "#F47A4E",
                                         "line": {
@@ -562,7 +571,8 @@
                                     "x": [0.0, 0.07000000000000006],
                                     "y": ["Lead ", "pH"]
                                 }, {
-                                    "hovertemplate": "Goal for<br><b>%{y}</b> is %{text}<extra></extra>",
+                                    "customdata": ["ppb", "ppb", "ppm", "ppm", "pCi/L", "ppm (90th percentile)", "ppb (90th percentile)"],
+                                    "hovertemplate": "Goal for<b>%{y}</b>:<br> %{text} %{customdata}<extra></extra>",
                                     "marker": {
                                         "color": "#F9D812",
                                         "line": {
@@ -572,7 +582,7 @@
                                         "symbol": 142
                                     },
                                     "mode": "markers",
-                                    "text": [0.004, 0.1, 4.0, 1.0, null, null, null, 0.43, 0.3, 0.2, null, null, null, null, null, null, null],
+                                    "text": [0.004, 0.1, 4.0, 1.0, 0.43, 0.3, 0.2],
                                     "type": "scatter",
                                     "x": [-0.9996, -0.99, 0.0, -0.5, -0.9785, -0.76923, -0.98667],
                                     "y": ["Arsenic ", "Bromate ", "Chlorine", "Fluoride ", "Uranium ", "Copper", "Lead "]
