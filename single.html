@@ -193,7 +193,7 @@
         if (document.getElementById("bccc7441-d9b9-49c5-b287-c9acdb816cf3")) {
             Plotly.newPlot(
                 'bccc7441-d9b9-49c5-b287-c9acdb816cf3', [{
-                    "hovertemplate": "Average <b>Arsenic </b> level<br>in %{x} was %{y}<extra></extra>",
+                    "hovertemplate": "Average <b>Arsenic </b> level<br>in %{x} was %{y}ppb<extra></extra>",
                     "line": {
                         "color": "#5DA7FF",
                         "width": 2
@@ -228,24 +228,24 @@
                     "y": [0.004, 0.004, 0.004, 0.004]
                 }], {
                     "annotations": [{
-                        "align": "left",
+                        "align": "right",
                         "font": {
                             "color": "#F47A4E",
                             "size": 12
                         },
                         "showarrow": false,
-                        "text": "EPA Standard",
-                        "x": 2018.7,
+                        "text": "Action Level",
+                        "x": 2018.75,
                         "y": 10.5
                     }, {
-                        "align": "left",
+                        "align": "right",
                         "font": {
                             "color": " #F4A74E",
                             "size": 12
                         },
                         "showarrow": false,
                         "text": "Goals",
-                        "x": 2018.75,
+                        "x": 2018.85,
                         "y": 0.504
                     }],
                     "height": 350,
@@ -746,7 +746,8 @@
                         "showgrid": true
                     }
                 }, {
-                    "responsive": true
+                    "responsive": true,
+                    "displayModeBar": false
                 }
             )
         };
