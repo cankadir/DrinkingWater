@@ -96,7 +96,7 @@ for i,r in df.iterrows():
                     color="#F47A4E"
                     ),
                   )
-    fig.add_annotation(text="EPA Goals",
+    fig.add_annotation(text="Goals",
                 x=2018.75, y=goal+0.5, showarrow=False,align='left',
                 font=dict(
                 size=12,

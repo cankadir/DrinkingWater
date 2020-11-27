@@ -8,6 +8,7 @@ df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Da
 
 df.head(5)
 
+
 #%%
 
 plot_blue = '#5DA7FF'
@@ -29,123 +30,6 @@ for i,r in df['TYPICAL SOURCE'].iteritems():
 df['source'] = new_text
 
 df.head(5)
-
-
-#%% Simple Bar Chart - VERTICAL
-
-fig = go.Figure()
-
-df_below = df[ df['n_average']<=0 ]
-df_above = df[ df['n_average']>0 ]
-
-fig.add_trace( #Below Threshold
-    go.Scatter(
-        x=df_below['SUBSTANCE '],
-        y=df_below['n_average'],
-        mode = 'markers',
-        marker_symbol= 200,
-        text = df_below['source'].replace(' <br> ' , "<br>" , regex = True),
-        hovertemplate = '<b>%{x}</b><br>%{text}<extra></extra>',
-        error_y=dict(
-            type='data',
-            symmetric=False,
-            array= df_below['n_range_high'] - df_below['n_average'],
-            arrayminus = df_below['n_average'] - df_below['n_range_low'],
-            color='white',
-            thickness=7,
-            width=0,
-                ),
-            marker = dict(
-                color='black',
-                size = 3,
-                line_width=1.4
-                )
-        )
-    )
-
-fig.add_trace( #Above Threshold
-    go.Scatter(
-        x=df_above['SUBSTANCE '],
-        y=df_above['n_average'],
-        mode = 'markers',
-        marker_symbol= 200,
-        text = df_above['source'].replace(' <br> ' , "<br>" , regex = True),
-        hovertemplate = '<b>%{x}</b><br>%{text}<extra></extra>',
-        error_y=dict(
-            type='data',
-            symmetric=False,
-            array= df_above['n_range_high'] - df_above['n_average'],
-            arrayminus = df_above['n_average'] - df_above['n_range_low'] ,
-            color= plot_red,
-            thickness=7,
-            width=0,
-                ),
-            marker = dict(
-                color= 'black',
-                size = 3,
-                line_width=1.4
-                )
-        )
-    )
-
-fig.update_yaxes(nticks=1)
-
-fig.update_layout(yaxis_tickformat = '%')
-fig.update_layout(yaxis=dict(range=[-1,1]))
-
-fig.update_layout(
-    xaxis = dict(showticklabels=False),
-    yaxis = dict(showticklabels=False)
-    ) 
-
-fig.update_layout(
-    width=550,
-    height=350,
-    plot_bgcolor=plot_blue,
-    paper_bgcolor=plot_blue ,
-    showlegend = False,
-    margin = dict(t=0,l=0,r=0,b=0)
-    )
-
-fig.update_xaxes(showgrid=True, gridwidth=0.05, gridcolor = '#e4f6f5' )
-fig.update_yaxes(showgrid=True, gridwidth=0.05, gridcolor = '#e4f6f5' )
-
-fig.add_annotation(text="Level <b>Above</b><br>EPA Threshold",
-                  xref="paper", yref="paper",
-                  x=0, y=0.75, showarrow=False,align='right',
-                  font=dict(
-                    size=12,
-                    color="white"
-                    ),
-                  )
-
-fig.add_annotation(text="Level <b>Below</b><br>EPA Threshold",
-                  xref="paper", yref="paper",
-                  x=0, y=0.25, showarrow=False, align='right',
-                  font=dict(
-                    size=12,
-                    color="white"
-                    ),
-                  )
-
-fig.update_layout(
-    hoverlabel=dict(
-        bgcolor="white",
-        font_size=11,
-        #bordercolor = 'white'
-    )
-)
-fig.update_xaxes(range=[-4, len(df) ])
-
-#fig.show( config = dict(displayModeBar= False) )
-fig.write_html( 
-    r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\lolli_graph.html" ,
-    include_plotlyjs = 'cdn',
-    full_html = False
-    )
-#fig.write_image( r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\lolli_graph.pdf" )
-fig.show()
-
 
 # %% BAR CHART - VERTICAL
 
@@ -245,14 +129,14 @@ fig.add_shape(type="rect", #Violation BG
     line=dict(width=0),
     )
 
-fig.add_trace( #EPA Goals
+fig.add_trace( #Goals
     go.Scatter(
         y=df[~pd.isna(df['PHG [MCLG] Goal'])]['SUBSTANCE '],
         x=df[~pd.isna(df['PHG [MCLG] Goal'])]['n_goal'],
         mode = 'markers',
         marker_symbol = 142,
         text = df['PHG [MCLG] Goal'],
-        hovertemplate = "EPA's future goal for<br><b>%{y}</b> is %{text}<extra></extra>",
+        hovertemplate = "Goal for<br><b>%{y}</b> is %{text}<extra></extra>",
         marker = dict(
             color= '#F9D812',
             size = 10,
@@ -296,7 +180,7 @@ fig.add_annotation(text="Safe",
                     ),
                   )
 
-fig.add_annotation(text="EPA Threshold",
+fig.add_annotation(text="Action Level",
                   xref="paper", yref="paper",
                   x=0.79, y=ay, showarrow=False,align='right',
                   font=dict(
