@@ -4,7 +4,10 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 
+#Bad Data
 df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_1_Bad.xlsx" )
+#Good Data
+df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_2_Good_NYC_2.xlsx" )
 
 df.head(5)
 
@@ -32,6 +35,9 @@ df['source'] = new_text
 df.head(5)
 
 # %% BAR CHART - VERTICAL
+
+height = 650
+width = 400
 
 fig = go.Figure()
 
@@ -150,11 +156,16 @@ fig.add_trace( #Goals
         )
     )
 
+if len(df_above) == 0:
+    xlim = 0.1
+else:
+    xlim = df['n_average'].max()
+
 fig.update_layout( #All Layout
-    width=650,
-    height=400,
+    width=width,
+    height=height,
     xaxis = dict(zeroline=False,nticks=1,showgrid=False,showticklabels=False,
-        range = [df['n_average'].min() - 0.05 , df['n_average'].max() + 0.05 ]
+        range = [df['n_average'].min() - 0.05 , xlim + 0.05 ]
         ),
     xaxis_tickformat = '%',
     yaxis = dict(
@@ -206,6 +217,11 @@ fig.add_annotation(text="Violation",
 config={'modeBarButtonsToRemove': ['toggleSpikelines','hoverCompareCartesian','zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2'],'displayModeBar': False }
 fig.show( config = config )
 
+#%%
+
+fig.write_image( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\visual\good_chart.pdf" )
+
+#%%
 fig.write_html( 
     r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph.html" ,
     include_plotlyjs = 'cdn',
@@ -213,4 +229,8 @@ fig.write_html(
     )
 
 
+# %%
+
+import sys
+print( sys.prefix)
 # %%
