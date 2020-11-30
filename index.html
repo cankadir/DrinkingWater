@@ -109,6 +109,11 @@
         #title-bar {
             height: 80px;
         }
+        
+        .footer {
+            position: absolute;
+            bottom: 0;
+        }
     </style>
 
     <title>Safe Water</title>
@@ -136,7 +141,21 @@
             </div>
         </div>
 
+
+
     </div>
+
+
+
+    <!-- Footer -->
+    <footer class="page-footer mt-5">
+        <hr width="650px" size="2">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-1">
+            Designed By:<a href="https://commons.pratt.edu/savi/" style="color: white"> SAVI</a> & <a href="https://www.saraeichnergis.com/" style="color: white">Sara Eichner</a>
+        </div>
+    </footer>
+
 
     <script type="text/javascript">
         $('#button1').on('click', function() {
@@ -144,10 +163,11 @@
 
             if (zipcode === '11222') {
                 window.open('https://prattsavi.github.io/DrinkingWater/no.html', '_blank');
-            } else if (zipcide === '11223') {
+            } else if (zipcode === '11223') {
+
                 window.open('https://prattsavi.github.io/DrinkingWater/yes.html', '_blank');
             } else {
-                alert('Please enter\n 11222 to go to the "no!" page,\n11223 to go to the "yes!" page.');
+                alert('Please enter\n11222 to go to the "no!" page,\n11223 to go to the "yes!" page.');
             }
 
 
