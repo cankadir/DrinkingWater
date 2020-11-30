@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript">
+        window.PlotlyConfig = {
+            MathJaxConfig: 'local'
+        };
+    </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+        window.PlotlyConfig = {
+            MathJaxConfig: 'local'
+        };
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+            background-color: #5DA7FF;
+        }
+        
+        #container {
+            width: 750px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-size: 5em;
+            font-weight: 800;
+        }
+        
+        .accordion .card {
+            background: rgb(0, 0, 0, 0);
+            border-radius: 0;
+            border: none;
+        }
+        
+        .accordion .card-header {
+            background: rgb(0, 0, 0, 0);
+            border-radius: 0;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            margin: 0 3px 3px 0;
+            border: none;
+        }
+        
+        .accordion .card-header:hover {
+            background: rgb(0, 0, 0, 0);
+        }
+        
+        .accordion .card-header .btn {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            width: 100%;
+            text-align: left;
+            position: relative;
+        }
+        
+        .accordion .card-header i {
+            float: right;
+            position: relative;
+            top: 5px;
+        }
+        
+        .accordion .card-header button:hover {
+            color: #23384e;
+        }
+        
+        .accordion .card-header.highlight {
+            color: #fff;
+            background: rgb(0, 0, 0, 0);
+        }
+        
+        .accordion .card-body {
+            margin-left: 50px;
+            text-align: justify;
+            font-size: 18px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+        
+        #map-image {
+            border-radius: 25px;
+            border-color: white;
+            border-width: 2px;
+            text-align: center;
+        }
+        
+        #main-graph {
+            margin-top: 10px;
+        }
+        
+        #text-def {
+            margin-top: 15px;
+            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+        
+        #title {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-size: 3.2em;
+            font-weight: 800;
+            z-index: 2;
+        }
+        
+        #title-bg {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-size: 3.2em;
+            font-weight: 800;
+            color: rgb(0, 0, 0, 0);
+            position: relative;
+            right: -4px;
+            top: -88px;
+            z-index: -1;
+            -webkit-text-stroke: 1px white;
+        }
+        
+        #answer {
+            margin-top: 0;
+            width: 100%;
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            color: #F47A4E;
+            font-size: 5em;
+            font-weight: 800;
+            z-index: 1;
+        }
+        
+        #answer-bg {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            color: white;
+            font-size: 5em;
+            font-weight: 800;
+            z-index: -1;
+            position: relative;
+            right: -310px;
+            top: -132px;
+        }
+        
+        #material-card {
+            background-color: white;
+            height: 303px;
+            width: 220px;
+            margin-left: 3px;
+        }
+        
+        #material-card-bad {
+            background-color: #F47A4E;
+            height: 303px;
+            width: 220px;
+            margin-left: 3px;
+            color: white;
+            border-color: white;
+            border-width: 2px;
+            border-style: solid;
+        }
+        
+        .material {
+            font-family: 'Open Sans', sans-serif;
+            color: #5DA7FF
+        }
+        
+        .material-bad {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+        }
+        
+        p.material-bad {
+            font-size: 13px;
+            font-weight: 600;
+            text-justify: none;
+            margin-bottom: 5px;
+        }
+        
+        p.material {
+            font-size: 13px;
+            font-weight: 600;
+            text-justify: none;
+            margin-bottom: 5px;
+        }
+        
+        p.material-title {
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        h5.material {
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #5DA7FF;
+        }
+        
+        h5.material-bad {
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+        }
+        
+        hr {
+            border: none;
+            color: white;
+            background-color: white;
+            height: 2px;
+        }
+        
+        #title-bar {
+            height: 80px;
+        }
+        
+        .fa {
+            font-size: 28px;
+            color: #767676;
+        }
+        
+        #verdict {
+            height: 120px;
+        }
+    </style>
+
+    <title>Drinking Water!</title>
+</head>
+
+<body>
+    <div id="container">
+
+        <!--Title -->
+        <div class="row d-flex justify-content-center mt-5 mb-2" id="title-bar">
+            <p id="title">Is My Water Safe?</p>
+            <p id="title-bg">Is My Water Safe?</p>
+        </div>
+
+        <div class="row d-flex mt-2 mb-0" id="verdict">
+            <p id="answer">Yes!</p>
+            <p id="answer-bg">Yes!</p>
+        </div>
+
+        <div class="row d-flex justify-content-center mt-0">
+            <div class="col-lg-12">
+
+                <div class="accordion mt-1 nopadding" id="accordionExample">
+
+
+                    <!--General Info-->
+                    <div class="card">
+                        <div class="card-header p-0 mt-1" id="headingOne">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Why? <i class="material-icons">add</i></a>
+                            </h2>
+                            <hr width="750px" size="5">
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. There are <b>no</b> contaminants above standards in your area.</b>
+                                </span>.
+                                <div class="row d-flex justify-content-center">
+
+                                    <!--PLotly Chart-->
+                                    <div id="19260298-a030-4ef8-b8cc-953349c35fab" class="plotly-graph-div" style="height:660px; width:640px;"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Learn -->
+                    <div class="card">
+                        <div class="card-header p-0 mt-1" id="headingZero">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">Where Does My Water Come From? <i class="material-icons">add</i></a>
+                            </h2>
+                            <hr width="750px" size="5">
+                        </div>
+
+                        <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-02-01.svg" alt="zipcode map" width="660px" height="440px" style="border-style: solid;border-width: 1px;border-color: white;border-radius:10px;z-index: -3;">
+                                <p id='text-def'><b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill
+                                    Mountains that are as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton. </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Materials-->
+                    <div class="card">
+                        <div class="card-header p-0 mt-1" id="headingTwo">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Learn More...<i class="material-icons">add</i></a>
+                            </h2>
+                            <hr width="750px" size="5">
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <!--Row 5-->
+                                <div class="row mt-3">
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Lead</h5>
+                                                <p class="card-text material"><b>Source:</b> The most common sources of lead in drinking water are lead pipes, faucets, and plumbing fixtures.</p>
+                                                <p class="card-text material"><b>Violation:</b><br> Average Level: 17ppb<br> Action Level: 15 ppb<br> Goal: 0.2ppb</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">pH</h5>
+                                                <p class="card-text material"><b>Source:</b> Water pipes and water-using appliances become encrusted with deposits, and it depresses the effectiveness of the disinfection of chlorine.</p>
+                                                <p class="card-text material"><b>Violation:</b><br> Average Level: 7.9ppb<br> Action Level: 6.5 ppb<br> Goal: NA</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Chlorine</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 11ppb<br> Action Level: 10 ppb<br> Goal: 4ppb</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <!--Row 4-->
+                                <div class="row mt-3">
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Chloride</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 29ppb<br> Action Level: 250ppb<br> Goal: NA</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Odor Tresh.</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 1ton<br> Action Level: 3ton<br> Goal: NA</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Sp. Conductance</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 310µS/cm<br> Action Level: 1600µS/cm<br> Goal: NA</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Row 3-->
+                                <div class="row mt-3">
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Total Tri.</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 10.5ppb<br> Action Level: 80ppb<br> Goal: NA</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Uranium</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Violation:</b><br> Average Level: 2.5pCi/L<br> Action Level: 20pCi/L<br> Goal: 0.43pCi/L</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Copper</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 0.9ppm<br> Action Level: 1.3ppm<br> Goal: 0.3ppm</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Row 2-->
+                                <div class="row mt-3">
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Floride</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 0.7ppm<br> Action Level: 2ppm<br> Goal: 1ppm</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Haloacetic Acids</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 1.1ppb<br> Action Level: 60ppb<br> Goal: NA</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">TOC</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 11ppb<br> Action Level: 10 ppb<br> Goal: 4ppb</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--Row 1-->
+                                <div class="row mt-3">
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Arsenic</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 11ppb<br> Action Level: 10 ppb<br> Goal: 4ppb</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 p-0">
+                                        <div class="card" id="material-deck">
+                                            <div class="card-body" id="material-card">
+                                                <h5 class="card-title material">Bromate</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Violation:</b><br> Average Level: 11ppb<br> Action Level: 10 ppb<br> Goal: 4ppb</p>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="page-footer mt-5">
+                        <hr width="650px" size="2">
+                        <!-- Copyright -->
+                        <div class="footer-copyright text-center py-1">
+                            Designed By:<a href="https://commons.pratt.edu/savi/" style="color: white"> SAVI</a> & <a href="https://www.saraeichnergis.com/" style="color: white">Sara Eichner</a>
+                        </div>
+                    </footer>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Bootstrap Code-->
+    <script>
+        $(document).ready(function() {
+            // Add minus icon for collapse element which is open by default
+            $(".collapse.show").each(function() {
+                $(this).siblings(".card-header").find(".btn i").html("remove");
+                $(this).prev(".card-header").addClass("highlight");
+            });
+
+            // Toggle plus minus icon on show hide of collapse element
+            $(".collapse").on('show.bs.collapse', function() {
+                $(this).parent().find(".card-header .btn i").html("remove");
+            }).on('hide.bs.collapse', function() {
+                $(this).parent().find(".card-header .btn i").html("add");
+            });
+
+            // Highlight open collapsed element 
+            $(".card-header .btn").click(function() {
+                $(".card-header").not($(this).parents()).removeClass("highlight");
+                $(this).parents(".card-header").toggleClass("highlight");
+            });
+        });
+    </script>
+
+    <!--Plotly Graph JS-->
+    <script>
+        window.PLOTLYENV = window.PLOTLYENV || {};
+
+        if (document.getElementById("19260298-a030-4ef8-b8cc-953349c35fab")) {
+            Plotly.newPlot(
+                '19260298-a030-4ef8-b8cc-953349c35fab', [{
+                    "customdata": [17.0, 0.02, 19.0, 0.6, 6.0, 0.006, 0.7, 31.0, 0.0, 15.0, 0.15, 0.0, 7.4, 2.1, 5.5, 72.0, 0.9, 0.0, 1.4, 2.5, 0.0, 0.34, 2.52, 51.0, 2.0, 2.3, 0.0, 50.0],
+                    "hovertemplate": "<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>",
+                    "marker": {
+                        "color": "white",
+                        "line": {
+                            "width": 0
+                        },
+                        "size": 10
+                    },
+                    "mode": "markers",
+                    "text": ["Erosion of natural deposits", "Erosion of natural deposits", "Naturally occurring; road\nsalt", "Water additive for disinfec-\ntion", "Presence of iron, man-\nganese, and<br>organics in\nwater", "Corrosion of household\nplumbing; erosion of\nnatural<br>deposits", "Additive which promotes\nstrong teeth; erosion<br>of\nnatural deposits", "Naturally occurring", "Corrosion of household\nplumbing; erosion of\nnatural<br>deposits", "Naturally occurring", "Runoff from fertilizer use; leaching<br>from septic tanks, sewage; erosion<br>of natural deposits", "Runoff from fertilizer use; leaching<br>from septic tanks, sewage; erosion<br>of natural deposits", null, "Water additive for corrosion control", "Naturally occurring", "Metals and salts natu-\nrally occurring<br>in the soil;\norganic matter", "Soil runoff", "Naturally occurring", "By-product of drinking\nwater chlorination", "By-product of drinking\nwater chlorination", "By-product of drinking\nwater chlorination", "By-product of drinking\nwater chlorination", "By-product of drinking\nwater chlorination", "By-product of drinking\nwater chlorination", "By-product of drinking\nwater chlorination", "By-product of drinking\nwater chlorination", "Discharge from chemical\nfactories", "By-product of drinking\nwater chlorination"],
+                    "type": "scatter",
+                    "x": [-0.6599999999999999, -0.99, -0.924, -0.85, -0.6, -0.9953846153846154, -0.6818181818181819, -0.8966666666666667, -1.0, -0.95, -0.985, -1.0, -0.09756097560975596, -0.9999520919833919, -0.978, -0.856, -0.8200000000000001, -1.0, -0.972, -0.95, -1.0, -0.9932, -0.9496, -0.15000000000000002, -0.96, -0.954, -1.0, -0.375],
+                    "y": ["Aluminum ", "Barium ", "Chloride ", "Chlorine Residual, Free ", "Color - entry points", "Copper ", "Fluoride ", "Iron ", "Lead ", "Manganese ", "Nitrate ", "Nitrite ", "pH ", "Phosphate, Ortho- ", "Sulfate ", "Total Dissolved Solids ", "Turbidity ", "Zinc ", "Bromochloroacetic Acid ", "Bromodichloroacetic Acid ", "Chlorodibromoacetic Acid ", "Chloropicrin ", "Chloral Hydrate ", "Haloacetic Acid 5 ", "Haloacetonitriles ", "Halogenated Ketones ", "Hexachlorocyclopentadiene ", "Total Trihalomethanes "]
+                }, {
+                    "base": [-0.88, -0.995, -0.96, -1.0, -0.8, -1.0, -1.0, -1.0, -1.0, -1.0, -0.993, -1.0, -0.14634146341463405, -0.9999908746635032, -0.9872, -0.928, -1.0, -1.0, -1.0, -0.972, -1.0, -0.9946, -0.9818, -0.6833333333333333, -0.972, -0.962, -1.0, -0.8625],
+                    "hoverinfo": "skip",
+                    "marker": {
+                        "color": "white"
+                    },
+                    "opacity": 0.2,
+                    "orientation": "h",
+                    "type": "bar",
+                    "width": 0.75,
+                    "x": [1.0, 0.010000000000000009, 0.32399999999999995, 0.30000000000000004, 0.4666666666666667, 0.0476923076923077, 0.36363636363636365, 0.8, 1.8666666666666667, 0.45666666666666667, 0.04500000000000004, 0.0020000000000000018, 0.46341463414634165, 7.300269197429987e-05, 0.07599999999999996, 0.42000000000000004, 2.82, 0.006000000000000005, 0.06400000000000006, 0.07399999999999995, 0.01200000000000001, 0.0030000000000000027, 0.07540000000000002, 0.6833333333333333, 0.018000000000000016, 0.018000000000000016, 0.0015199999999999658, 0.8500000000000001],
+                    "y": ["Aluminum ", "Barium ", "Chloride ", "Chlorine Residual, Free ", "Color - entry points", "Copper ", "Fluoride ", "Iron ", "Lead ", "Manganese ", "Nitrate ", "Nitrite ", "pH ", "Phosphate, Ortho- ", "Sulfate ", "Total Dissolved Solids ", "Turbidity ", "Zinc ", "Bromochloroacetic Acid ", "Bromodichloroacetic Acid ", "Chlorodibromoacetic Acid ", "Chloropicrin ", "Chloral Hydrate ", "Haloacetic Acid 5 ", "Haloacetonitriles ", "Halogenated Ketones ", "Hexachlorocyclopentadiene ", "Total Trihalomethanes "]
+                }, {
+                    "customdata": [],
+                    "hovertemplate": "<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>",
+                    "marker": {
+                        "color": "#F47A4E",
+                        "line": {
+                            "color": "white",
+                            "width": 1
+                        },
+                        "size": 14,
+                        "symbol": 4
+                    },
+                    "mode": "markers",
+                    "text": [],
+                    "type": "scatter",
+                    "x": [],
+                    "y": []
+                }, {
+                    "base": [],
+                    "marker": {
+                        "color": "#F47A4E"
+                    },
+                    "opacity": 0.3,
+                    "orientation": "h",
+                    "type": "bar",
+                    "width": 0.75,
+                    "x": [],
+                    "y": []
+                }, {
+                    "customdata": ["mg/L", "mg/L", "mg/L", "\u03bcg/L", "mg/L nitrogen", "mg/L nitrogen"],
+                    "hovertemplate": "Goal for <b>%{y}</b>:<br> %{text} %{customdata}<extra></extra>",
+                    "marker": {
+                        "color": "#F9D812",
+                        "line": {
+                            "width": 3
+                        },
+                        "size": 10,
+                        "symbol": 142
+                    },
+                    "mode": "markers",
+                    "text": [2.0, 1.3, 4.0, 0.0, 10.0, 1.0],
+                    "type": "scatter",
+                    "x": [0.0, 0.0, 0.8181818181818181, -1.0, 0.0, 0.0],
+                    "y": ["Barium ", "Copper ", "Fluoride ", "Lead ", "Nitrate ", "Nitrite "]
+                }], {
+                    "annotations": [{
+                        "align": "right",
+                        "font": {
+                            "color": "white",
+                            "family": "Open Sans, sans-serif",
+                            "size": 12
+                        },
+                        "showarrow": false,
+                        "text": "Safe",
+                        "x": 0.025,
+                        "xref": "paper",
+                        "y": 0.99,
+                        "yref": "paper"
+                    }, {
+                        "align": "right",
+                        "font": {
+                            "color": "white",
+                            "family": "Open Sans, sans-serif",
+                            "size": 12
+                        },
+                        "showarrow": false,
+                        "text": "Action Level",
+                        "x": 0.87,
+                        "xref": "paper",
+                        "y": 0.99,
+                        "yref": "paper"
+                    }, {
+                        "align": "right",
+                        "font": {
+                            "color": "white",
+                            "family": "Open Sans, sans-serif",
+                            "size": 12
+                        },
+                        "showarrow": false,
+                        "text": "Violation",
+                        "x": 0.99,
+                        "xref": "paper",
+                        "y": 0.99,
+                        "yref": "paper"
+                    }],
+                    "height": 660,
+                    "hoverlabel": {
+                        "bgcolor": "white",
+                        "font": {
+                            "size": 11
+                        }
+                    },
+                    "margin": {
+                        "b": 5,
+                        "l": 5,
+                        "r": 5,
+                        "t": 5
+                    },
+                    "paper_bgcolor": "#5DA7FF",
+                    "plot_bgcolor": "#5DA7FF",
+                    "shapes": [{
+                        "line": {
+                            "color": "#F47A4E",
+                            "dash": "dash",
+                            "width": 1.5
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": 0,
+                        "x1": 0,
+                        "y0": -0.5,
+                        "y1": 29
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 0,
+                        "y1": 0
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 1,
+                        "y1": 1
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 2,
+                        "y1": 2
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 3,
+                        "y1": 3
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 4,
+                        "y1": 4
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 5,
+                        "y1": 5
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 6,
+                        "y1": 6
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 7,
+                        "y1": 7
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 8,
+                        "y1": 8
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 9,
+                        "y1": 9
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 10,
+                        "y1": 10
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 11,
+                        "y1": 11
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 12,
+                        "y1": 12
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 13,
+                        "y1": 13
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 14,
+                        "y1": 14
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 15,
+                        "y1": 15
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 16,
+                        "y1": 16
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 17,
+                        "y1": 17
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 18,
+                        "y1": 18
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 19,
+                        "y1": 19
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 20,
+                        "y1": 20
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 21,
+                        "y1": 21
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 22,
+                        "y1": 22
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 23,
+                        "y1": 23
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 24,
+                        "y1": 24
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 25,
+                        "y1": 25
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 26,
+                        "y1": 26
+                    }, {
+                        "line": {
+                            "color": "white",
+                            "dash": "dot",
+                            "width": 0.6
+                        },
+                        "opacity": 0.75,
+                        "type": "line",
+                        "x0": -1.05,
+                        "x1": 1.05,
+                        "y0": 27,
+                        "y1": 27
+                    }, {
+                        "fillcolor": "#F47A4E",
+                        "line": {
+                            "width": 0
+                        },
+                        "opacity": 0.5,
+                        "type": "rect",
+                        "x0": 1.05,
+                        "x1": 0,
+                        "y0": 28,
+                        "y1": 29
+                    }],
+                    "showlegend": false,
+                    "template": {
+                        "data": {
+                            "bar": [{
+                                "error_x": {
+                                    "color": "#2a3f5f"
+                                },
+                                "error_y": {
+                                    "color": "#2a3f5f"
+                                },
+                                "marker": {
+                                    "line": {
+                                        "color": "#E5ECF6",
+                                        "width": 0.5
+                                    }
+                                },
+                                "type": "bar"
+                            }],
+                            "barpolar": [{
+                                "marker": {
+                                    "line": {
+                                        "color": "#E5ECF6",
+                                        "width": 0.5
+                                    }
+                                },
+                                "type": "barpolar"
+                            }],
+                            "carpet": [{
+                                "aaxis": {
+                                    "endlinecolor": "#2a3f5f",
+                                    "gridcolor": "white",
+                                    "linecolor": "white",
+                                    "minorgridcolor": "white",
+                                    "startlinecolor": "#2a3f5f"
+                                },
+                                "baxis": {
+                                    "endlinecolor": "#2a3f5f",
+                                    "gridcolor": "white",
+                                    "linecolor": "white",
+                                    "minorgridcolor": "white",
+                                    "startlinecolor": "#2a3f5f"
+                                },
+                                "type": "carpet"
+                            }],
+                            "choropleth": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "type": "choropleth"
+                            }],
+                            "contour": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "colorscale": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ],
+                                "type": "contour"
+                            }],
+                            "contourcarpet": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "type": "contourcarpet"
+                            }],
+                            "heatmap": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "colorscale": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ],
+                                "type": "heatmap"
+                            }],
+                            "heatmapgl": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "colorscale": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ],
+                                "type": "heatmapgl"
+                            }],
+                            "histogram": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "histogram"
+                            }],
+                            "histogram2d": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "colorscale": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ],
+                                "type": "histogram2d"
+                            }],
+                            "histogram2dcontour": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "colorscale": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ],
+                                "type": "histogram2dcontour"
+                            }],
+                            "mesh3d": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "type": "mesh3d"
+                            }],
+                            "parcoords": [{
+                                "line": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "parcoords"
+                            }],
+                            "pie": [{
+                                "automargin": true,
+                                "type": "pie"
+                            }],
+                            "scatter": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scatter"
+                            }],
+                            "scatter3d": [{
+                                "line": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scatter3d"
+                            }],
+                            "scattercarpet": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scattercarpet"
+                            }],
+                            "scattergeo": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scattergeo"
+                            }],
+                            "scattergl": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scattergl"
+                            }],
+                            "scattermapbox": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scattermapbox"
+                            }],
+                            "scatterpolar": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scatterpolar"
+                            }],
+                            "scatterpolargl": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scatterpolargl"
+                            }],
+                            "scatterternary": [{
+                                "marker": {
+                                    "colorbar": {
+                                        "outlinewidth": 0,
+                                        "ticks": ""
+                                    }
+                                },
+                                "type": "scatterternary"
+                            }],
+                            "surface": [{
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                },
+                                "colorscale": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ],
+                                "type": "surface"
+                            }],
+                            "table": [{
+                                "cells": {
+                                    "fill": {
+                                        "color": "#EBF0F8"
+                                    },
+                                    "line": {
+                                        "color": "white"
+                                    }
+                                },
+                                "header": {
+                                    "fill": {
+                                        "color": "#C8D4E3"
+                                    },
+                                    "line": {
+                                        "color": "white"
+                                    }
+                                },
+                                "type": "table"
+                            }]
+                        },
+                        "layout": {
+                            "annotationdefaults": {
+                                "arrowcolor": "#2a3f5f",
+                                "arrowhead": 0,
+                                "arrowwidth": 1
+                            },
+                            "coloraxis": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            },
+                            "colorscale": {
+                                "diverging": [
+                                    [0, "#8e0152"],
+                                    [0.1, "#c51b7d"],
+                                    [0.2, "#de77ae"],
+                                    [0.3, "#f1b6da"],
+                                    [0.4, "#fde0ef"],
+                                    [0.5, "#f7f7f7"],
+                                    [0.6, "#e6f5d0"],
+                                    [0.7, "#b8e186"],
+                                    [0.8, "#7fbc41"],
+                                    [0.9, "#4d9221"],
+                                    [1, "#276419"]
+                                ],
+                                "sequential": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ],
+                                "sequentialminus": [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"]
+                                ]
+                            },
+                            "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"],
+                            "font": {
+                                "color": "#2a3f5f"
+                            },
+                            "geo": {
+                                "bgcolor": "white",
+                                "lakecolor": "white",
+                                "landcolor": "#E5ECF6",
+                                "showlakes": true,
+                                "showland": true,
+                                "subunitcolor": "white"
+                            },
+                            "hoverlabel": {
+                                "align": "left"
+                            },
+                            "hovermode": "closest",
+                            "mapbox": {
+                                "style": "light"
+                            },
+                            "paper_bgcolor": "white",
+                            "plot_bgcolor": "#E5ECF6",
+                            "polar": {
+                                "angularaxis": {
+                                    "gridcolor": "white",
+                                    "linecolor": "white",
+                                    "ticks": ""
+                                },
+                                "bgcolor": "#E5ECF6",
+                                "radialaxis": {
+                                    "gridcolor": "white",
+                                    "linecolor": "white",
+                                    "ticks": ""
+                                }
+                            },
+                            "scene": {
+                                "xaxis": {
+                                    "backgroundcolor": "#E5ECF6",
+                                    "gridcolor": "white",
+                                    "gridwidth": 2,
+                                    "linecolor": "white",
+                                    "showbackground": true,
+                                    "ticks": "",
+                                    "zerolinecolor": "white"
+                                },
+                                "yaxis": {
+                                    "backgroundcolor": "#E5ECF6",
+                                    "gridcolor": "white",
+                                    "gridwidth": 2,
+                                    "linecolor": "white",
+                                    "showbackground": true,
+                                    "ticks": "",
+                                    "zerolinecolor": "white"
+                                },
+                                "zaxis": {
+                                    "backgroundcolor": "#E5ECF6",
+                                    "gridcolor": "white",
+                                    "gridwidth": 2,
+                                    "linecolor": "white",
+                                    "showbackground": true,
+                                    "ticks": "",
+                                    "zerolinecolor": "white"
+                                }
+                            },
+                            "shapedefaults": {
+                                "line": {
+                                    "color": "#2a3f5f"
+                                }
+                            },
+                            "ternary": {
+                                "aaxis": {
+                                    "gridcolor": "white",
+                                    "linecolor": "white",
+                                    "ticks": ""
+                                },
+                                "baxis": {
+                                    "gridcolor": "white",
+                                    "linecolor": "white",
+                                    "ticks": ""
+                                },
+                                "bgcolor": "#E5ECF6",
+                                "caxis": {
+                                    "gridcolor": "white",
+                                    "linecolor": "white",
+                                    "ticks": ""
+                                }
+                            },
+                            "title": {
+                                "x": 0.05
+                            },
+                            "xaxis": {
+                                "automargin": true,
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "ticks": "",
+                                "title": {
+                                    "standoff": 15
+                                },
+                                "zerolinecolor": "white",
+                                "zerolinewidth": 2
+                            },
+                            "yaxis": {
+                                "automargin": true,
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "ticks": "",
+                                "title": {
+                                    "standoff": 15
+                                },
+                                "zerolinecolor": "white",
+                                "zerolinewidth": 2
+                            }
+                        }
+                    },
+                    "width": 640,
+                    "xaxis": {
+                        "nticks": 1,
+                        "range": [-1.05, 0.15000000000000002],
+                        "showgrid": false,
+                        "showticklabels": false,
+                        "tickformat": "%",
+                        "zeroline": false
+                    },
+                    "yaxis": {
+                        "range": [-1, 29],
+                        "showgrid": false,
+                        "showticklabels": false,
+                        "zeroline": false
+                    }
+                }, {
+                    "responsive": true,
+                    "displayModeBar": false
+                }
+            )
+        };
+    </script>
+
+</body>
+
+</html>

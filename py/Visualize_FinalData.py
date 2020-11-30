@@ -5,7 +5,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 #Bad Data
-df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_1_Bad.xlsx" )
+#df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_1_Bad.xlsx" )
 #Good Data
 df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_2_Good_NYC_2.xlsx" )
 
@@ -36,13 +36,22 @@ df.head(5)
 
 # %% BAR CHART - VERTICAL
 
-height = 650
-width = 400
+height = 660
+width = 640
 
 fig = go.Figure()
 
+#Above and below are seprated in traces
 df_below = df[ df['n_average']<=0 ]
 df_above = df[ df['n_average']>0 ]
+
+#If there is nothing above the threshold, extend the xaxis to display the threshold
+if len(df_above) == 0:
+    xlim = 0.1
+else:
+    xlim = df['n_average'].max()
+
+ay = 0.99 #Hight of the annotations above
 
 fig.add_trace( #Below Threshold - POINT
     go.Scatter(
@@ -68,7 +77,8 @@ fig.add_trace( #Below Threshold - BAR
         orientation = 'h',
         width = 0.75,
         marker_color = 'white',
-        opacity= 0.2
+        opacity= 0.2,
+        hoverinfo='skip'
 
         )
     )
@@ -106,7 +116,7 @@ fig.add_trace( #Above Threshold - BAR
     )
 
 fig.add_shape(type="line", #GRID LINES - ZERO LINE
-    x0=0, y0=0, x1=0, y1=len(df)+1,
+    x0=0, y0=-0.5, x1=0, y1=len(df)+1,
     opacity = 0.75,
     line=dict(
         color= plot_red,
@@ -156,10 +166,6 @@ fig.add_trace( #Goals
         )
     )
 
-if len(df_above) == 0:
-    xlim = 0.1
-else:
-    xlim = df['n_average'].max()
 
 fig.update_layout( #All Layout
     width=width,
@@ -182,7 +188,6 @@ fig.update_layout( #All Layout
         )
     )
 
-ay = 0.99
 
 fig.add_annotation(text="Safe",
                   xref="paper", yref="paper",
@@ -196,7 +201,7 @@ fig.add_annotation(text="Safe",
 
 fig.add_annotation(text="Action Level",
                   xref="paper", yref="paper",
-                  x=0.79, y=ay, showarrow=False,align='right',
+                  x=0.87, y=ay, showarrow=False,align='right',
                   font=dict(
                     family= "Open Sans, sans-serif",
                     size=12,
@@ -219,11 +224,11 @@ fig.show( config = config )
 
 #%%
 
-fig.write_image( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\visual\good_chart.pdf" )
+#fig.write_image( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\visual\good_chart.pdf" )
 
 #%%
 fig.write_html( 
-    r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph.html" ,
+    r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph_Good.html" ,
     include_plotlyjs = 'cdn',
     full_html = False
     )
