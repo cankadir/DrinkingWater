@@ -272,7 +272,7 @@
                 <div class="accordion mt-1 nopadding" id="accordionExample">
 
 
-                    <!--General Info-->
+                    <!--WHY-->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingOne">
                             <h2 class="mb-0">
@@ -281,18 +281,23 @@
                             <hr width="750px" size="5">
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. Contaminants above EPA standarts are <span style="color:#F47A4E;"><b>highlighted in red</b></span>.
+                            <div class="card-body ml-0">
+
+                                <p id='text-def'>Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. Contaminants above EPA standarts are <span style="color:#F47A4E;"><b>highlighted in red</b></span>.</p>
                                 <div class="row d-flex justify-content-center">
 
                                     <!--PLotly Chart-->
-                                    <div id="2f021ddb-ccd3-4a37-ab8c-799aa1766dd7" class="plotly-graph-div" style="height:400px; width:650px;"></div>
+                                    <div style="width:100%;margin-left:15px;height:45px;margin-top:0;padding-top:0">
+                                        <p id='text-def'>Measured Substances:</p>
+                                    </div>
+                                    <div id="2f021ddb-ccd3-4a37-ab8c-799aa1766dd7" class="plotly-graph-div" style="height:450px; width:100%;"></div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--Learn -->
+                    <!--WHERE DOES MY WATER COMES FROM -->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingZero">
                             <h2 class="mb-0">
@@ -302,8 +307,8 @@
                         </div>
 
                         <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-02-01.svg" alt="zipcode map" width="660px" height="440px" style="border-style: solid;border-width: 1px;border-color: white;border-radius:10px;z-index: -3;">
+                            <div class="card-body ml-0">
+                                <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-02-01.svg" alt="zipcode map" width="715px" height="475px" style="border-style: solid;border-width: 1px;border-color: white;border-radius:10px;z-index: -3;">
                                 <p id='text-def'><b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill
                                     Mountains that are as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton. </p>
 
@@ -311,7 +316,7 @@
                         </div>
                     </div>
 
-                    <!--Materials-->
+                    <!--LEARN MORE - MATERIALS -->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingTwo">
                             <h2 class="mb-0">
@@ -320,7 +325,7 @@
                             <hr width="750px" size="5">
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body ml-0">
                                 <!--Row 5-->
                                 <div class="row mt-3">
                                     <div class="col-lg-4 p-0">
@@ -337,9 +342,9 @@
                                     <div class="col-lg-4 p-0">
                                         <div class="card" id="material-deck">
                                             <div class="card-body" id="material-card-bad">
-                                                <h5 class="card-title material-bad">pH</h5>
-                                                <p class="card-text material-bad"><b>Source:</b> Water pipes and water-using appliances become encrusted with deposits, and it depresses the effectiveness of the disinfection of chlorine.</p>
-                                                <p class="card-text material-bad"><b>Violation:</b><br> Average Level: 7.9ppb<br> Action Level: 6.5 ppb<br> Goal: NA</p>
+                                                <h5 class="card-title material-bad">Arsenic</h5>
+                                                <p class="card-text material-bad"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material-bad"><b>Violation:</b><br> Average Level: 11ppb<br> Action Level: 10ppb<br> Goal: 4ppb</p>
                                                 <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
@@ -458,16 +463,6 @@
 
                                 <!--Row 1-->
                                 <div class="row mt-3">
-                                    <div class="col-lg-4 p-0">
-                                        <div class="card" id="material-deck">
-                                            <div class="card-body" id="material-card">
-                                                <h5 class="card-title material">Arsenic</h5>
-                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
-                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 11ppb<br> Action Level: 10 ppb<br> Goal: 4ppb</p>
-                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="col-lg-4 p-0">
                                         <div class="card" id="material-deck">
@@ -542,7 +537,7 @@
         if (document.getElementById("2f021ddb-ccd3-4a37-ab8c-799aa1766dd7")) {
             Plotly.newPlot(
                 '2f021ddb-ccd3-4a37-ab8c-799aa1766dd7', [{
-                    "customdata": [2.2, 2.1, 1.65, 0.7, 1.1, 1.5, 10.5, 2.5, 0.9, 29.0, 1.0, 310.0, 24.0, 186.0, 0.1],
+                    "customdata": [2.1, 1.65, 0.7, 1.1, 1.5, 10.5, 2.5, 0.9, 29.0, 1.0, 310.0, 24.0, 186.0, 0.1],
                     "hovertemplate": "<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>",
                     "marker": {
                         "color": "white",
@@ -552,12 +547,13 @@
                         "size": 10
                     },
                     "mode": "markers",
-                    "text": ["Erosion of natural deposits; runoff<br>from orchards; glass and electronics<br>production wastes", "Byproduct of drinking water disinfection", "Drinking water disinfectant added for<br>treatment", "Erosion of natural deposits; water<br>additive that promotes strong teeth;<br>discharge from fertilizer and aluminum<br>factories", "Byproduct of drinking water disinfection", "Various natural and manmade sources", "Byproduct of drinking water disinfection", "Erosion of natural deposits", "Internal  corrosion of <br>household  plumbing system; <br>erosion of natural  deposits;<br> leaching from  wood<br> preservatives", "Runoff/leaching from natural deposits; seawater<br>influence", "Naturally-occurring organic materials", "Runoff/leaching from natural deposits; seawater<br>influence", "Runoff/leaching from natural deposits; industrial<br>wastes", "Runoff/leaching from natural deposits", "Soil runoff"],
+                    "text": ["Byproduct of drinking water disinfection", "Drinking water disinfectant added for<br>treatment", "Erosion of natural deposits; water<br>additive that promotes strong teeth;<br>discharge from fertilizer and aluminum<br>factories", "Byproduct of drinking water disinfection", "Various natural and manmade sources", "Byproduct of drinking water disinfection", "Erosion of natural deposits", "Internal  corrosion of <br>household  plumbing system; <br>erosion of natural  deposits;<br> leaching from  wood<br> preservatives", "Runoff/leaching from natural deposits; seawater<br>influence", "Naturally-occurring organic materials", "Runoff/leaching from natural deposits; seawater<br>influence", "Runoff/leaching from natural deposits; industrial<br>wastes", "Runoff/leaching from natural deposits", "Soil runoff"],
                     "type": "scatter",
-                    "x": [-0.78, -0.79, -0.5900000000000001, -0.65, -0.98, -0.25, -0.87, -0.87, -0.31000000000000005, -0.88, -0.6699999999999999, -0.81, -0.9, -0.63, -0.98],
-                    "y": ["Arsenic ", "Bromate ", "Chlorine", "Fluoride ", "Haloacetic Acids ", "Total Organic Carbon  [TOC]", "Total Trihalomethanes", "Uranium ", "Copper", "Chloride ", "Odor Threshold ", "Specific Conductance ", "Sulfate", "Total Dissolved Solids ", "Turbidity"]
+                    "x": [-0.79, -0.5900000000000001, -0.65, -0.98, -0.25, -0.87, -0.87, -0.31000000000000005, -0.88, -0.6699999999999999, -0.81, -0.9, -0.63, -0.98],
+                    "y": ["Bromate ", "Chlorine", "Fluoride ", "Haloacetic Acids ", "Total Organic Carbon  [TOC]", "Total Trihalomethanes", "Uranium ", "Copper", "Chloride ", "Odor Threshold ", "Specific Conductance ", "Sulfate", "Total Dissolved Solids ", "Turbidity"]
                 }, {
-                    "base": [-1.0, -1.0, -0.62, -0.8, -1.0, -0.44999999999999996, -0.92, -0.95, -1.0, -0.9299999999999999, -1.0, -0.9, -0.94, -0.75, -1.0],
+                    "base": [-1.0, -0.62, -0.8, -1.0, -0.44999999999999996, -0.92, -0.95, -1.0, -0.9299999999999999, -1.0, -0.9, -0.94, -0.75, -1.0],
+                    "hoverinfo": "skip",
                     "marker": {
                         "color": "white"
                     },
@@ -565,10 +561,10 @@
                     "orientation": "h",
                     "type": "bar",
                     "width": 0.75,
-                    "x": [0.25, 0.24, 0.10999999999999999, 0.20000000000000007, 0.07000000000000006, 0.3999999999999999, 0.09999999999999998, 0.17999999999999994, 0.0, 0.09999999999999998, 0.67, 0.45000000000000007, 0.07999999999999996, 0.20999999999999996, 0.06000000000000005],
-                    "y": ["Arsenic ", "Bromate ", "Chlorine", "Fluoride ", "Haloacetic Acids ", "Total Organic Carbon  [TOC]", "Total Trihalomethanes", "Uranium ", "Copper", "Chloride ", "Odor Threshold ", "Specific Conductance ", "Sulfate", "Total Dissolved Solids ", "Turbidity"]
+                    "x": [0.24, 0.10999999999999999, 0.20000000000000007, 0.07000000000000006, 0.3999999999999999, 0.09999999999999998, 0.17999999999999994, 0.0, 0.09999999999999998, 0.67, 0.45000000000000007, 0.07999999999999996, 0.20999999999999996, 0.06000000000000005],
+                    "y": ["Bromate ", "Chlorine", "Fluoride ", "Haloacetic Acids ", "Total Organic Carbon  [TOC]", "Total Trihalomethanes", "Uranium ", "Copper", "Chloride ", "Odor Threshold ", "Specific Conductance ", "Sulfate", "Total Dissolved Solids ", "Turbidity"]
                 }, {
-                    "customdata": [17.0, 7.9],
+                    "customdata": [10.5, 17.0],
                     "hovertemplate": "<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>",
                     "marker": {
                         "color": "#F47A4E",
@@ -580,12 +576,12 @@
                         "symbol": 4
                     },
                     "mode": "markers",
-                    "text": ["Internal  corrosion of <br>household  plumbing system; <br>discharge  from industrial <br>manufactures;  erosion of <br>natural  deposits", null],
+                    "text": ["Erosion of natural deposits; runoff<br>from orchards; glass and electronics<br>production wastes", "Internal  corrosion of <br>household  plumbing system; <br>discharge  from industrial <br>manufactures;  erosion of <br>natural  deposits"],
                     "type": "scatter",
-                    "x": [0.1299999999999999, 0.21999999999999997],
-                    "y": ["Lead ", "pH"]
+                    "x": [0.050000000000000044, 0.1299999999999999],
+                    "y": ["Arsenic ", "Lead "]
                 }, {
-                    "base": [-1.0, 0.17999999999999994],
+                    "base": [-0.09999999999999998, -1.0],
                     "marker": {
                         "color": "#F47A4E"
                     },
@@ -593,11 +589,11 @@
                     "orientation": "h",
                     "type": "bar",
                     "width": 0.75,
-                    "x": [0.0, 0.07000000000000006],
-                    "y": ["Lead ", "pH"]
+                    "x": [0.2499999999999999, 0.0],
+                    "y": ["Arsenic ", "Lead "]
                 }, {
                     "customdata": ["ppb", "ppb", "ppm", "ppm", "pCi/L", "ppm (90th percentile)", "ppb (90th percentile)"],
-                    "hovertemplate": "Goal for<b>%{y}</b>:<br> %{text} %{customdata}<extra></extra>",
+                    "hovertemplate": "Goal for <b>%{y}</b>:<br> %{text} %{customdata}<extra></extra>",
                     "marker": {
                         "color": "#F9D812",
                         "line": {
@@ -634,7 +630,7 @@
                         },
                         "showarrow": false,
                         "text": "Action Level",
-                        "x": 0.79,
+                        "x": 0.85,
                         "xref": "paper",
                         "y": 0.99,
                         "yref": "paper"
@@ -652,7 +648,7 @@
                         "y": 0.99,
                         "yref": "paper"
                     }],
-                    "height": 400,
+                    "height": 450,
                     "hoverlabel": {
                         "bgcolor": "white",
                         "font": {
@@ -677,8 +673,8 @@
                         "type": "line",
                         "x0": 0,
                         "x1": 0,
-                        "y0": 0,
-                        "y1": 18
+                        "y0": -0.5,
+                        "y1": 17
                     }, {
                         "line": {
                             "color": "white",
@@ -872,18 +868,6 @@
                         "y0": 15,
                         "y1": 15
                     }, {
-                        "line": {
-                            "color": "white",
-                            "dash": "dot",
-                            "width": 0.6
-                        },
-                        "opacity": 0.75,
-                        "type": "line",
-                        "x0": -1.05,
-                        "x1": 1.05,
-                        "y0": 16,
-                        "y1": 16
-                    }, {
                         "fillcolor": "#F47A4E",
                         "line": {
                             "width": 0
@@ -892,8 +876,8 @@
                         "type": "rect",
                         "x0": 1.05,
                         "x1": 0,
-                        "y0": 17,
-                        "y1": 18
+                        "y0": 16,
+                        "y1": 17
                     }],
                     "showlegend": false,
                     "template": {
@@ -1367,17 +1351,17 @@
                             }
                         }
                     },
-                    "width": 650,
+                    "width": 739,
                     "xaxis": {
                         "nticks": 1,
-                        "range": [-1.03, 0.26999999999999996],
+                        "range": [-1.03, 0.17999999999999988],
                         "showgrid": false,
                         "showticklabels": false,
                         "tickformat": "%",
                         "zeroline": false
                     },
                     "yaxis": {
-                        "range": [-1, 18],
+                        "range": [-1, 17],
                         "showgrid": false,
                         "showticklabels": false,
                         "zeroline": false

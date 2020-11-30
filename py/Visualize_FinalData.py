@@ -5,12 +5,17 @@ import numpy as np
 import plotly.graph_objects as go
 
 #Bad Data
-#df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_1_Bad.xlsx" )
+df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_1_Bad.xlsx" )
 #Good Data
-df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_2_Good_NYC_2.xlsx" )
+#df = pd.read_excel( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\data\Dataset_2_Good_NYC_2.xlsx" )
 
 df.head(5)
 
+#%%
+
+df = df[ df['SUBSTANCE '] != 'pH' ]
+#df = df.sort_values( by = 'n_average' , ascending=False)
+df[['SUBSTANCE ','n_average']]
 
 #%%
 
@@ -36,8 +41,8 @@ df.head(5)
 
 # %% BAR CHART - VERTICAL
 
-height = 660
-width = 640
+height = 450
+width = 739
 
 fig = go.Figure()
 
@@ -115,6 +120,25 @@ fig.add_trace( #Above Threshold - BAR
         )
     )
 
+fig.add_trace( #Goals
+    go.Scatter(
+        y=df[~pd.isna(df['PHG [MCLG] Goal'])]['SUBSTANCE '],
+        x=df[~pd.isna(df['PHG [MCLG] Goal'])]['n_goal'],
+        mode = 'markers',
+        marker_symbol = 142,
+        text = df[~pd.isna(df['PHG [MCLG] Goal'])]['PHG [MCLG] Goal'],
+        customdata = df[~pd.isna(df['PHG [MCLG] Goal'])]['Units'],
+        hovertemplate = "Goal for <b>%{y}</b>:<br> %{text} %{customdata}<extra></extra>",
+        marker = dict(
+            color= '#F9D812',
+            size = 10,
+            line = dict(
+                width = 3
+                )
+            )
+        )
+    )
+
 fig.add_shape(type="line", #GRID LINES - ZERO LINE
     x0=0, y0=-0.5, x1=0, y1=len(df)+1,
     opacity = 0.75,
@@ -147,26 +171,6 @@ fig.add_shape(type="rect", #Violation BG
     line=dict(width=0),
     )
 
-fig.add_trace( #Goals
-    go.Scatter(
-        y=df[~pd.isna(df['PHG [MCLG] Goal'])]['SUBSTANCE '],
-        x=df[~pd.isna(df['PHG [MCLG] Goal'])]['n_goal'],
-        mode = 'markers',
-        marker_symbol = 142,
-        text = df[~pd.isna(df['PHG [MCLG] Goal'])]['PHG [MCLG] Goal'],
-        customdata = df[~pd.isna(df['PHG [MCLG] Goal'])]['Units'],
-        hovertemplate = "Goal for<b>%{y}</b>:<br> %{text} %{customdata}<extra></extra>",
-        marker = dict(
-            color= '#F9D812',
-            size = 10,
-            line = dict(
-                width = 3
-                )
-            )
-        )
-    )
-
-
 fig.update_layout( #All Layout
     width=width,
     height=height,
@@ -186,8 +190,10 @@ fig.update_layout( #All Layout
         bgcolor="white",
         font_size=11,
         )
-    )
+    title = 'Measured Substances:'
 
+    )
+    )
 
 fig.add_annotation(text="Safe",
                   xref="paper", yref="paper",
@@ -201,7 +207,7 @@ fig.add_annotation(text="Safe",
 
 fig.add_annotation(text="Action Level",
                   xref="paper", yref="paper",
-                  x=0.87, y=ay, showarrow=False,align='right',
+                  x=0.85, y=ay, showarrow=False,align='right',
                   font=dict(
                     family= "Open Sans, sans-serif",
                     size=12,
@@ -228,7 +234,7 @@ fig.show( config = config )
 
 #%%
 fig.write_html( 
-    r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph_Good.html" ,
+    r"C:\Users\csucuogl\Documents\GitHub\DrinkingWater\visuals\vBar_graph.html" ,
     include_plotlyjs = 'cdn',
     full_html = False
     )
