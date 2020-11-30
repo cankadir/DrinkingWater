@@ -189,10 +189,8 @@ fig.update_layout( #All Layout
     hoverlabel=dict(
         bgcolor="white",
         font_size=11,
-        )
-    title = 'Measured Substances:'
+        ),
 
-    )
     )
 
 fig.add_annotation(text="Safe",
