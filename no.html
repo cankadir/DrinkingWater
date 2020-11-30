@@ -117,7 +117,7 @@
         
         #text-def {
             margin-top: 15px;
-            font-size: 16px;
+            font-size: 15px;
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
         }
@@ -283,12 +283,15 @@
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body ml-0">
 
-                                <p id='text-def'>Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. Contaminants above EPA standarts are <span style="color:#F47A4E;"><b>highlighted in red</b></span>.</p>
+                                <p id='text-def'>
+                                    The chart below displays up-to-date data regarding contaminants in drinking water. Each bar represents the presence of a single substance that is measured in the water supply system. The bar shows the range of samples over the year and the point shows
+                                    the average. If any contaminants exceed EPA or state standards (whichever are most stringent) they will be shown in red. Hover over the bars to learn more.
+                                </p>
                                 <div class="row d-flex justify-content-center">
 
                                     <!--PLotly Chart-->
                                     <div style="width:100%;margin-left:15px;height:45px;margin-top:0;padding-top:0">
-                                        <p id='text-def'>Measured Substances:</p>
+                                        <p id='text-def'><b>Detected Substances:</b></p>
                                     </div>
                                     <div id="2f021ddb-ccd3-4a37-ab8c-799aa1766dd7" class="plotly-graph-div" style="height:450px; width:100%;"></div>
 
@@ -309,9 +312,10 @@
                         <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordionExample">
                             <div class="card-body ml-0">
                                 <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1.png" alt="zipcode map" width="715px" height="622px" style="border-style: solid;border-width: 1px;border-color: white;border-radius:10px;z-index: -3;">
-                                <p id='text-def'><b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill
-                                    Mountains that are as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton. </p>
-
+                                <p id='text-def'>
+                                    <b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill
+                                    Mountains that are as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton.
+                                </p>
                             </div>
                         </div>
                     </div>

@@ -110,9 +110,22 @@
             height: 80px;
         }
         
-        .footer {
+        footer {
             position: absolute;
-            bottom: 0;
+            bottom: 10px;
+        }
+        
+        #text-def {
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+        
+        hr {
+            border: none;
+            color: white;
+            background-color: white;
+            height: 2px;
         }
     </style>
 
@@ -139,23 +152,31 @@
                 </form>
 
             </div>
+
+            <div class="row d-flex  mt-5 ml-3 mr-0">
+
+                <p id='text-def'>
+                    This site is a prototype design that uses dummy or made-up data to demonstrate the possible functions of a proposed tool to reimagine Consumer Confidence Reports about drinking water quality in the US. It does not represent the real state of NYC water
+                    which is very safe and clean.
+                </p>
+
+            </div>
         </div>
 
 
+
+
+
+        <!-- Footer -->
+        <footer class="page-footer mt-5">
+            <hr width="650px" size="2">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-1">
+                Designed By:<a href="https://commons.pratt.edu/savi/" style="color: white"> SAVI</a> & <a href="https://www.saraeichnergis.com/" style="color: white">Sara Eichner</a>
+            </div>
+        </footer>
 
     </div>
-
-
-
-    <!-- Footer -->
-    <footer class="page-footer mt-5">
-        <hr width="650px" size="2">
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-1">
-            Designed By:<a href="https://commons.pratt.edu/savi/" style="color: white"> SAVI</a> & <a href="https://www.saraeichnergis.com/" style="color: white">Sara Eichner</a>
-        </div>
-    </footer>
-
 
     <script type="text/javascript">
         $('#button1').on('click', function() {

@@ -66,11 +66,11 @@ fig.add_trace( #Below Threshold - POINT
         text = df_below['source'].replace(' <br> ' , "<br>" , regex = True),
         customdata = df_below['Average Level'], 
         hovertemplate = '<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>',
-            marker = dict(
-                color='white',
-                size = 10,
-                line_width=0
-                )
+        marker = dict(
+            color='white',
+            size = 10,
+            line_width=0
+            )
         )
     )
 
@@ -228,7 +228,7 @@ fig.show( config = config )
 
 #%%
 
-#fig.write_image( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\visual\good_chart.pdf" )
+fig.write_image( r"C:\Users\csucuogl\Dropbox\CCR_waterQuality_contest\visual\bad_chart.pdf" )
 
 #%%
 fig.write_html( 
