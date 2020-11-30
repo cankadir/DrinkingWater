@@ -117,7 +117,7 @@
         
         #text-def {
             margin-top: 15px;
-            font-size: 16px;
+            font-size: 15px;
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
         }
@@ -266,13 +266,14 @@
             <p id="answer-bg">Yes!</p>
         </div>
 
+        <!--Accordion Starts Here-->
         <div class="row d-flex justify-content-center mt-0">
             <div class="col-lg-12">
 
                 <div class="accordion mt-1 nopadding" id="accordionExample">
 
 
-                    <!--General Info-->
+                    <!--WHY-->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingOne">
                             <h2 class="mb-0">
@@ -281,19 +282,26 @@
                             <hr width="750px" size="5">
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">Below chart displays the most updated data regarding contaminants in tap water. Each bar represents a single substance. There are <b>no</b> contaminants above standards in your area.</b>
-                                </span>.
-                                <div class="row d-flex justify-content-center">
+                            <div class="card-body ml-0">
+
+                                <p id='text-def'>
+                                    The chart below displays up-to-date data regarding contaminants in drinking water. Each bar represents the presence of a single substance that is measured in the water supply system. The bar shows the range of samples over the year and the point shows
+                                    the average. If any contaminants exceed EPA or state standards (whichever are most stringent) they will be shown in red. Hover over the bars to learn more.
+                                </p>
+                                <div class="row d-flex justify-content-center mb-1">
 
                                     <!--PLotly Chart-->
-                                    <div id="19260298-a030-4ef8-b8cc-953349c35fab" class="plotly-graph-div" style="height:660px; width:640px;"></div>
+                                    <div style="width:100%;margin-left:15px;height:45px;margin-top:0;padding-top:0">
+                                        <p id='text-def'><b>Detected Substances:</b></p>
+                                    </div>
+                                    <div id="2f021ddb-ccd3-4a37-ab8c-799aa1766dd7" class="plotly-graph-div" style="height:650px; width:100%;"></div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--Learn -->
+                    <!--WHERE DOES MY WATER COMES FROM -->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingZero">
                             <h2 class="mb-0">
@@ -303,16 +311,17 @@
                         </div>
 
                         <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1-02-01.svg" alt="zipcode map" width="660px" height="440px" style="border-style: solid;border-width: 1px;border-color: white;border-radius:10px;z-index: -3;">
-                                <p id='text-def'><b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill
-                                    Mountains that are as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton. </p>
-
+                            <div class="card-body ml-0">
+                                <img src="https://raw.githubusercontent.com/PrattSAVI/DrinkingWater/main/img/Map_1.png" alt="zipcode map" width="715px" height="622px" style="border-style: solid;border-width: 1px;border-color: white;border-radius:10px;z-index: -3;">
+                                <p id='text-def'>
+                                    <b>New York City</b> gets its drinking water from 19 reservoirs and three controlled lakes spread across a nearly 2,000-square-mile watershed. The watershed is located upstate in portions of the Hudson Valley and Catskill
+                                    Mountains that are as far as 125 miles north of the city. New York City’s water supply system is comprised of two primary water supplies called the Catskill/Delaware and Croton.
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <!--Materials-->
+                    <!--LEARN MORE - MATERIALS -->
                     <div class="card">
                         <div class="card-header p-0 mt-1" id="headingTwo">
                             <h2 class="mb-0">
@@ -321,7 +330,7 @@
                             <hr width="750px" size="5">
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body ml-0">
                                 <!--Row 5-->
                                 <div class="row mt-3">
                                     <div class="col-lg-4 p-0">
@@ -330,7 +339,7 @@
                                                 <h5 class="card-title material">Lead</h5>
                                                 <p class="card-text material"><b>Source:</b> The most common sources of lead in drinking water are lead pipes, faucets, and plumbing fixtures.</p>
                                                 <p class="card-text material"><b>Violation:</b><br> Average Level: 17ppb<br> Action Level: 15 ppb<br> Goal: 0.2ppb</p>
-                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                                <a href="https://prattsavi.github.io/DrinkingWater/Lead.html" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -338,14 +347,13 @@
                                     <div class="col-lg-4 p-0">
                                         <div class="card" id="material-deck">
                                             <div class="card-body" id="material-card">
-                                                <h5 class="card-title material">pH</h5>
-                                                <p class="card-text material"><b>Source:</b> Water pipes and water-using appliances become encrusted with deposits, and it depresses the effectiveness of the disinfection of chlorine.</p>
-                                                <p class="card-text material"><b>Violation:</b><br> Average Level: 7.9ppb<br> Action Level: 6.5 ppb<br> Goal: NA</p>
+                                                <h5 class="card-title material">Arsenic</h5>
+                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
+                                                <p class="card-text material"><b>Violation:</b><br> Average Level: 11ppb<br> Action Level: 10ppb<br> Goal: 4ppb</p>
                                                 <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
                                     </div>
-
 
                                     <div class="col-lg-4 p-0">
                                         <div class="card" id="material-deck">
@@ -357,7 +365,6 @@
                                             </div>
                                         </div>
                                     </div>
-
 
                                 </div>
 
@@ -472,16 +479,6 @@
 
                                 <!--Row 1-->
                                 <div class="row mt-3">
-                                    <div class="col-lg-4 p-0">
-                                        <div class="card" id="material-deck">
-                                            <div class="card-body" id="material-card">
-                                                <h5 class="card-title material">Arsenic</h5>
-                                                <p class="card-text material"><b>Source:</b> Arsenic enters water through erosion of natural deposits; runoff from orchards; glass and electroics production wastes.</p>
-                                                <p class="card-text material"><b>Compliance:</b><br> Average Level: 11ppb<br> Action Level: 10 ppb<br> Goal: 4ppb</p>
-                                                <a href="https://prattsavi.github.io/DrinkingWater/single" target="_blank" style="color: black;position:absolute;bottom:10px;"> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="col-lg-4 p-0">
                                         <div class="card" id="material-deck">
@@ -493,6 +490,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -507,7 +505,6 @@
                             Designed By:<a href="https://commons.pratt.edu/savi/" style="color: white"> SAVI</a> & <a href="https://www.saraeichnergis.com/" style="color: white">Sara Eichner</a>
                         </div>
                     </footer>
-
 
                 </div>
             </div>
@@ -541,10 +538,10 @@
     <!--Plotly Graph JS-->
     <script>
         window.PLOTLYENV = window.PLOTLYENV || {};
-
-        if (document.getElementById("19260298-a030-4ef8-b8cc-953349c35fab")) {
+        var graph_id = '2f021ddb-ccd3-4a37-ab8c-799aa1766dd7';
+        if (document.getElementById(graph_id)) {
             Plotly.newPlot(
-                '19260298-a030-4ef8-b8cc-953349c35fab', [{
+                graph_id, [{
                     "customdata": [17.0, 0.02, 19.0, 0.6, 6.0, 0.006, 0.7, 31.0, 0.0, 15.0, 0.15, 0.0, 7.4, 2.1, 5.5, 72.0, 0.9, 0.0, 1.4, 2.5, 0.0, 0.34, 2.52, 51.0, 2.0, 2.3, 0.0, 50.0],
                     "hovertemplate": "<b>%{y}</b><br>%{text}<br><b>Current Average Level:</b> %{customdata} <extra></extra>",
                     "marker": {
@@ -1503,7 +1500,7 @@
                             }
                         }
                     },
-                    "width": 640,
+                    "width": 739,
                     "xaxis": {
                         "nticks": 1,
                         "range": [-1.05, 0.15000000000000002],
